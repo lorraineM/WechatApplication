@@ -1,0 +1,350 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>快递下单Demo</title>
+		<meta name="author" content="xxx" />
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.css" />" />
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css" />" />
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />" ></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
+		<style type="text/css">
+		ul{
+			padding: 0;
+			margin: 0;
+		}
+		.main-container{
+			color: #666;
+			padding-top: 0;
+			height: auto;
+			margin-top: -47px;
+			/*background-color: #eee;*/
+		}
+		.main-container .banner{
+			background: url("/web/resources/images/pic-web/deepblue.jpg") no-repeat center;*/
+			padding-top: 42px;
+			color: #fff;
+			border-bottom: 1px solid #eee;
+			position: relative;
+		}
+		.grid-25{
+			width: 990px;
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 0;
+			display: inline;
+		}
+		.small-title{
+			display: block;
+			overflow: hidden;
+			position: relative;
+			color: #4d4d4d;
+			clear: both;
+		}
+		.z-1:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+		
+		.s-btns a{
+			margin-left: 190px;
+			width: 220px;
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			text-decoration: none;
+			background-color: #ffa800;
+			text-decoration:none;
+		}
+		.s-btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+		.search-a-btn{
+			display: inline-block;
+			border: none;
+			border-radius: 3px;
+			overflow: visible;
+			font-size: 18px;
+			color: #ffffff;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="top_header">
+			<div class="d-w-990 top_header-wrap z-1">
+				<ul class="topmenu">
+					<li class="topmenu-item topmenu-item-first">
+						欢迎用户:
+					</li>
+					<li class="topmenu-item">
+						<a href="" title="进入我的快递demo">15200000000</a>
+					</li>
+					<li class="topmenu-item">
+						<a seed="logout" href="">退出登录</a>
+					</li>
+					<li class="topmenu-item topmenu-item-last">
+						<a href="" target="_blank" title="常见问题FAQ">常见问题</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<header class="header">
+			<div class="d-w-990 header-wrap z-1">
+				<nav role="navigation">
+					<ul class="nav">
+						<li class="nav-item" id="home">
+							<a href="" class="nav-item-link">首页</a>
+						</li>
+						<li class="nav-item" id="send">
+							<a href="/web/service/send" class="nav-item-link">我要寄件</a>
+						</li>
+						<li class="nav-item" id="srv">
+							<a href="/web/service/myLogistics" class="nav-item-link">管理服务</a>
+							<div class="nav-item-sub sl-shadow" style="display:none;">
+								<table class="nav-item-table">
+									<thead></thead>
+									<tbody style="font-size:12px">
+										<tr>
+											<td><a href="/web/service/addressManager">地址管理</a></td>
+											<td class="last"><a href="/web/service/myLogistics">运单管理</a></td>
+										</tr>
+										<tr>
+											<td><a>公司管理</a></td>
+											<td class="last"><a>站点管理</a></td>
+										</tr>
+										<tr>
+											<td class"last"><a>公司配置</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="angle sl-angle"></div>
+						</li>
+						<li class="nav-item active" id="search">
+							<a href="/web/service/search" class="nav-item-link">快件查询</a>
+						</li>
+						<li class="nav-item" id="about">
+							<a class="nav-item-link">关于我们</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="sub-header">
+			<ul class="sub-nav">
+				<li class="sub-nav-item sub-nav-item-current">
+					<a href="/web/service/search">快件查询</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="main-container">
+			<div class="second-div d-w-990 z-1">
+				<div class="grid-25">
+					<!-- detail slide up/down -->
+					<style type="text/css">
+					.log-detail{
+						border: none;
+ 						background: #fff;
+					}
+					.log-detail .log-header{
+						position: relative;
+						background-color: #647390;
+					}
+					.log-detail .log-header .certify-log-pic{
+						display: inline-block;
+						text-align: center;
+						margin: 33px 0 33px 50px;
+					}
+					.log-detail .log-header .log-info{
+						position: absolute;
+						left: 210px;
+						padding: 35px 0 30px 0;
+						font-size: 14px;
+						color: #fff;
+					}
+					.log-info h3{
+						font-size: 15px;
+						color: #fff;
+					}
+					.log-info h3 span{
+						color: #ffd73e;					
+					}
+					.log-info li{
+						float: left;
+ 	 					min-width: 100px;
+  						padding-right: 40px;
+  						line-height: 25px;
+  						font-size: 14px;
+  						color: #c1cbdf
+					}
+					.ui-line .ui-solid{
+						width: 618px;
+					}
+					.ui-line{
+						margin: 12px 0 7px 0;
+  						border-bottom: 1px solid #c3c3c3;
+					}
+
+					.mg-top{
+						padding-top: 20px;
+					}
+					.hs-line{
+						position: relative;
+						overflow-y: hidden;
+						margin-bottom: 10px; 
+					}
+					</style>
+					<div name="log-detail" id="log-detail" class="log-detail mg-top z-1">
+						<div class="log-header" style="height:146px;">
+							<div class="certify-log-pic">
+								<img src='${picUrl}' width="92" height="80">
+							</div>
+							<div class="log-info" style="top:-25px;">
+								<h3>订单编号: <span>${mailNo}</span></h3>
+								<ul class="z-1">
+									<li>承运公司: <span>${company}</span></li>
+									<li>收件人姓名: <span>MA XINYU</span></li>
+								</ul>
+								<div class="ui-line ui-solid"></div>
+								<p>下单时间: <span>2015-04-19 23:12:05</span></p>
+							</div>
+						</div>
+					</div>
+					<!-- detail slide up/down end -->
+
+				</div>
+			</div>
+			<div class="second-div d-w-990 hs-line z-1">
+				<style type="text/css">
+				/*重复CSS*/
+					.second-div .side-line{
+						position: absolute;
+						height: 100%;
+						margin-left: 34px;
+						width: 2px;
+						background: #e0e0e0;
+					}
+					.d-s-title .circle{
+						width: 20px;
+						height: 20px;
+						position: absolute;
+						left: 28px;
+						top: 0;
+						background: url("/web/resources/images/pic-web/s-circle.png") 0 0 no-repeat;
+						line-height: 30px;
+						text-align: center;
+					}
+					.inline-area{
+						display: inline;
+					}
+					.d-s-title{
+						position: relative;
+						line-height: 30px;
+						padding-left: 55px;
+					}
+					.inline-area h2{
+						font-size: 12px;
+						color: #444;
+						font-weight: normal;
+					}
+					.single-region{
+						margin-top: 15px;
+  						border: 1px solid #e7e7e7;
+  						background: #fff;
+					}
+					/*重复CSS END*/
+
+					.time-d-info{
+						margin: 13px 40px 10px 50px;
+  						padding: 20px 20px 10px;
+  						background: #e8ebed;
+  						border-radius: 10px;
+  						position: relative;
+					}
+					.icon-date{
+						width:1.66rem;
+						height:1.64rem;
+						display: inline-block;
+						background-size:100% auto; 
+						background-image:url("/web/resources/images/pic-web/date-icon.png");
+						margin-right:0.8rem;
+					}
+					.time-d-info .time{
+						display: inline-block;
+						font-size: 14px;
+						line-height: 28px;
+						margin-top: -12px;
+						color: #9b9793;
+					}
+					.time-d-info .log-trans{
+						position: absolute;
+						left: 100px;
+						margin-top: -26px; 
+						font-size: 14px;
+						line-height: 28px;
+					}
+					.time-d-info.active{
+						background: #fabc87;
+						color: #fff;
+						margin-left: 10px;
+					}
+					.time-d-info.active .time{
+						color: #fff;
+					}
+					.d-s-title h2.status-b{
+						font-size: 15px;
+						padding-bottom: 20px;
+					}
+					.d-s-title h2 a.status{
+						height: 25px;
+  						padding: 0 13px;
+ 					 	line-height: 25px;
+  						display: inline-block;
+  						margin-left: 20px;
+  						background-color: #4eadf2;
+  						color: #fff;
+  						border-radius: 2px;
+  						text-decoration: none;
+  						cursor: pointer;
+					}
+				</style>
+				<div class="side-line" style="margin-top:15px;"></div>
+				<div class="grid-25" style="margin-bottom:0;">
+					<div class="single-region z-1">
+<c:if test="${res == ''}">
+						<div class="d-s-title z-1">
+							<div class="inline-area" style="float:left;">
+								<div class="circle"></div>
+								<h2 class="status-b">状态:<a class="status">${status}</a></h2>
+							</div>
+						</div>
+						${eresult}
+</c:if>
+<c:if test="${res != ''}">
+						<div class="d-s-title z-1">
+							${res}
+						</div>
+</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+		$("#srv").mouseover(function(){
+			$("#srv").children("div").css('display','block');
+		});
+		$("#srv").mouseout(function(){
+			$("#srv").children("div").css('display','none');
+		});
+		$("body").bind("click",function(e){
+			if($(e.target).parents("#cmp-c").length == 0){
+				$("#cmp-c").children("ul").css('display','none');
+			}else{
+				$("#cmp-c").children("ul").css('display','block');
+			}
+		});
+		</script>
+	</body>
+</html>

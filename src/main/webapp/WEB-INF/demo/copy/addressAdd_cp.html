@@ -1,0 +1,828 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>快递下单Demo</title>
+		<meta name="author" content="xxx" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"  />
+		<script type="text/javascript" src="../../resources/js/jquery.min.js"  ></script>
+		<script type="text/javascript" src="../../resources/js/bootstrap.min.js" ></script>
+		<style type="text/css">
+		.top_header{
+			width:100%;
+			height:26px;
+			background:#f5f5f5;
+			background:-moz-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-webkit-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-o-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-ms-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			filter:
+				progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');
+			border-bottom:1px solid #dcdcdc;
+			_overflow:hidden;
+		}
+		.top_header-wrap{
+			height:26px;
+			background:#f5f5f5;
+			background:-moz-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-webkit-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-o-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-ms-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			filter:
+				progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');
+			border-bottom:1px solid #dcdcdc;
+		}
+		.top_header .toplink{
+			float:left;
+			width:300px;
+			line-height:14px;
+			height:14px;
+			padding:6px 0;
+		}
+		.topbar-wrap .toplink a{
+			display:block;
+			font-size:12px;
+			height:14px;
+			line-height:14px;
+			vertical-align:middle;
+		}
+		.d-w-990{
+			width: 990px;
+			margin: 0 auto;
+		}
+		.z-1{
+			zoom:1;
+		}
+		.header{
+			width:100%;
+			height:78px;
+			background-color:#ffffff;
+		}
+		.header-wrap{
+			height:60px;
+			padding-top:18px;
+		}
+		a{
+			text-decoration: none;
+			cursor: pointer;
+		}
+		header{
+			margin:0;
+			padding:0;
+			display:block;
+		}
+		ul {
+			list-style: none;
+		}
+		li{
+			margin: 0; padding: 0;
+		}
+		nav{
+			margin:0;
+			padding:0;
+			display:block;
+		}
+		body{
+			margin:0;
+			padding:0;
+			font: 12px/1.5 tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+		}
+		div{
+			margin:0;padding:0;
+		}
+		table{
+			border-collapse:collapse;
+			border-spacing:0;
+		}
+		select{font-size: 100%;}
+		em{ font-weight: 500; font-style: normal;}
+		.topmenu{float:right;padding:6px 0;color:#666666;position:relative;z-index:1000;}.topmenu-item{float:left;padding:1px 15px;line-height:12px;_line-height:14px;border-left:1px solid #fefefe;border-right:1px solid #e2e2e2;}.topmenu-item-first{border-left:none;border-right:none;}.topmenu-item-first .split{padding:0 5px;color:#666;}.topmenu-item-last{border-right:none;padding-right:0;}.topmenu-item-dropdown{position:relative;border-left:1px solid #e2e2e2;border-right:1px solid #e2e2e2;}.topmenu-item-dropdown:hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}.topmenu-item-dropdown-hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}.topmenu-item-dropdown a{float:left;zoom:1;}.topmenu-item-dropdown .icon-dropdown{width:12px;height:12px;display:inline-block;line-height:10px;overflow:hidden;vertical-align:middle;zoom:1;background-position:-452px -117px;}.topmenu-item-dropdown a:hover{text-decoration:none;}.topmenu-item-dropdown a:hover .icon-dropdown{background-position:-445px -60px;}.topmenu-item-dropdown-hover .icon-dropdown{background-position:-445px -60px;}.topmenu-item-dropdown ul{display:none;position:absolute;background-color:#fff;}.topmenu-item-dropdown:hover ul{padding-top:8px;*padding-top:6px;padding-bottom:2px;padding-left:15px;padding-right:27px;display:block;border-bottom:1px solid #ccc;left:-1px;top:16px;border-left:1px solid #ccc;border-right:1px solid #ccc;background-color:#ffffff;}.topmenu-item-dropdown-hover ul{padding-top:8px;*padding-top:6px;padding-bottom:2px;padding-left:15px;padding-right:27px;display:block;border-bottom:1px solid #ccc;left:-1px;top:16px;border-left:1px solid #ccc;border-right:1px solid #ccc;background-color:#ffffff;}.topmenu-item-dropdown ul li{line-height:21px;*line-height:18px;width:60px;}.topmenu-item-dropdown ul li a{display:block;}.topmenu-item-dropdown ul li a:hover{color:#ff6600;background-color:#ffffff;}.header{width:100%;height:78px;background-color:#ffffff;}
+		.sl-shadow{
+			-moz-box-shadow:0 0 4px #999999;
+			-o-box-shadow:0 0 4px #999999;
+			-webkit-box-shadow:0px 0px 4px #999999;
+			box-shadow:0px 0px 4px #999999;
+			-ms-filter:"progid:DXImageTransform.Microsoft.Glow(color=#a0a0a0,strength=0) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2)";
+			*filter:progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2);
+			}:root .sl-shadow{
+				filter:none\9;
+		}
+		.tab-div ul{list-style:none;background:#f6f8fa;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f9fbfd', endColorStr='#f1f3f6', gradientType='0');background:-moz-linear-gradient(top,#f9fbfd,#f1f3f6);background:-o-linear-gradient(top,#f9fbfd,#f1f3f6);background:-webkit-gradient(linear,0 0,0 100%,from(#f9fbfd),to(#f1f3f6));border-top:1px solid #E5E5E5;border-right:1px solid #E5E5E5;border-left:1px solid #E5E5E5;border-bottom:1px solid #E6E6E6}
+		.tab-div li{float:left;vertical-align:middle}
+		.tab-item a{font-size:14px;line-height:33px;height:33px;padding:0 20px;border-right:1px solid #E5E5E5;color:#666;display:inline-block;*display:inline;*zoom:1;transition:all .4s ease-out}.tab-item a:hover{text-decoration:none;background:#fefefe;color:#4d4d4d}.tab-item-current a,.tab-item-current a:hover{font-weight:700;background:#fcfcfc;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#fefefe', endColorStr='#fafafa', gradientType='0');background:-moz-linear-gradient(top,#fefefe,#fafafa);background:-o-linear-gradient(top,#fefefe,#fafafa);background:-webkit-gradient(linear,0 0,0 100%,from(#fefefe),to(#fafafa));position:relative;top:1px;color:#4d4d4d}
+		.nav-item-table{white-space:nowrap;background-repeat:repeat;background-attachment:scroll;background-position:0 0;}.nav-item-table td{border-right:1px solid #e7e7e7;padding:2px 14px;white-space:nowrap;}.nav-item-table th{border-right:1px solid #e7e7e7;padding:0 12px 2px 15px;white-space:nowrap;font-weight:700;border-collapse:separate;}.nav-item-table th.last{border-right:none;}.nav-item-table td.last{border-right:none;}.nav-item-table a{color:#898989;display:block;padding-left:3px;position:relative;vertical-align:middle;}.nav-item-table a:hover{background-color:#aaaaaa;border-radius:2px 2px 2px 2px;color:#FFFFFF;text-decoration:none;vertical-align:middle;}.nav-item .nav-item-sub{display:none;}
+		.nav{width:550px;height:45px;float:right;position:relative;z-index:999;}
+		.nav-item{float:left;height:45px;position:relative;}
+		.nav-item .nav-item-link{
+			height:45px;
+			display:block;
+			text-indent:-9999em;
+			overflow:hidden;
+			background-repeat:no-repeat;
+			z-index: 10;
+		}
+		.nav-item .nav-item-link:hover{background-repeat:no-repeat;}
+		.nav-item .nav-item-link-active{background-repeat:no-repeat;}
+		.nav-item-sub{
+			position:absolute;
+			padding:9px 3px;
+			top:45px;
+			background-color:#fff;
+			z-index: 20;
+		}
+		#home .nav-item-link {
+			background-image: url("../../resources/images/pic-web/shouye-a.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#send .nav-item-link {
+			background-image: url("../../resources/images/pic-web/jisong.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#srv .nav-item-link {
+			background-image: url("../../resources/images/pic-web/guanli.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#search .nav-item-link {
+			background-image: url("../../resources/images/pic-web/search.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#about .nav-item-link {
+			background-image: url("../../resources/images/pic-web/about.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		td.last{
+			border-right:none;
+		}
+		.nav-item .angle{position:absolute;display:none;width:15px;height:15px;font-size:0;top:35px;*top:36px;_top:38px;top:38px\0;right:65px;overflow:hidden;background-position:-418px -72px;}:root .angle{top:35px;}
+		.nav-item:hover .angle{display:block;}.nav-item-hover .angle{display:block;}
+		.sub-header{
+			position: relative;
+			z-index: 1;
+			background-color: #ffa800;
+			box-shadow: 0 1px 2px rgba(0,0,0,.8);
+			height: 32px;
+			margin-bottom: 15px;
+			line-height: 32px;
+		}
+		.sub-nav{
+			margin: 0 auto;
+			width: 990px;
+			list-style: none;
+			padding: 0;
+			font-size: 12px;
+			position: relative;
+			float: none;
+		}
+		.sub-nav-item{
+			float: left;
+			color: #676d70;
+		}
+		.sub-nav-item a{
+			-webkit-border-radius: 2px;
+			border-radius: 3px;
+			color: #676d70;
+			display: block;
+			line-height: 16px;
+			line-height: 15px \0;
+			margin-top: 3px;
+			padding: 5px 25px 6px;
+			text-decoration: none;
+		}
+		.sub-nav-item-current{
+			border-radius: 3px;
+			background-color: #fa7c13;
+			color: #fff;
+		}
+		.sub-nav-item-current a{
+			color:#fff;
+		}
+		.main-container{
+			color: #666;
+			padding-top: 0;
+			height: auto;
+			margin-top: -47px;
+			/*background-color: #eee;*/
+		}
+		.main-container .banner{
+			background: url("../../resources/images/pic-web/lightgreen.jpg") no-repeat center;*/
+			padding-top: 42px;
+			color: #fff;
+			border-bottom: 1px solid #eee;
+			position: relative;
+		}
+		.grid-25{
+			width: 990px;
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 0;
+			display: inline;
+		}
+		.small-title{
+			display: block;
+			overflow: hidden;
+			position: relative;
+			color: #4d4d4d;
+			clear: both;
+		}
+		.z-1:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+		
+		.s-btns a{
+			margin-left: 190px;
+			width: 220px;
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			text-decoration: none;
+			background-color: #ffa800;
+			text-decoration:none;
+		}
+		.s-btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+		.search-a-btn{
+			display: inline-block;
+			border: none;
+			border-radius: 3px;
+			overflow: visible;
+			font-size: 18px;
+			color: #ffffff;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="top_header">
+			<div class="d-w-990 top_header-wrap z-1">
+				<ul class="topmenu">
+					<li class="topmenu-item topmenu-item-first">
+						欢迎用户:
+					</li>
+					<li class="topmenu-item">
+						<a href="" title="进入我的快递demo">15200000000</a>
+					</li>
+					<li class="topmenu-item">
+						<a seed="logout" href="">退出登录</a>
+					</li>
+					<li class="topmenu-item topmenu-item-last">
+						<a href="" target="_blank" title="常见问题FAQ">常见问题</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<header class="header">
+			<div class="d-w-990 header-wrap z-1">
+				<nav role="navigation">
+					<ul class="nav">
+						<li class="nav-item" id="home">
+							<a href="" class="nav-item-link">首页</a>
+						</li>
+						<li class="nav-item" id="send">
+							<a href="" class="nav-item-link">我要寄件</a>
+						</li>
+						<li class="nav-item" id="srv">
+							<a href="" class="nav-item-link">管理服务</a>
+							<div class="nav-item-sub sl-shadow" style="display:none;">
+								<table class="nav-item-table">
+									<thead></thead>
+									<tbody style="font-size:12px">
+										<tr>
+											<td><a href="">地址管理</a></td>
+											<td class="last"><a href="">运单管理</a></td>
+										</tr>
+										<tr>
+											<td><a href="">公司管理</a></td>
+											<td class="last"><a href="">站点管理</a></td>
+										</tr>
+										<tr>
+											<td class"last"><a href="">公司配置</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="angle sl-angle"></div>
+						</li>
+						<li class="nav-item" id="search">
+							<a href="" class="nav-item-link">快件查询</a>
+						</li>
+						<li class="nav-item" id="about">
+							<a href="" class="nav-item-link">关于我们</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="sub-header">
+			<ul class="sub-nav">
+				<li class="sub-nav-item sub-nav-item-current">
+					<a href="">我要寄件</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main-container">
+			<div class="banner" style="background:none">
+				<div class="d-w-990 z-1">
+					<div class="grid-25">
+					</div>
+				</div>
+			</div>
+			<style type="text/css">
+			input{
+				border: none;
+				outline: none;
+			}
+			.second-bg{
+				background-position: 50% 50%;
+				width: 100%;
+				height:480px;
+				background: url("../../resources/images/pic-web/scbg.jpg") no-repeat;
+			}
+			.card{
+				width: 300px;
+				margin: 25px 0;
+				padding-left: 400px;
+			}
+			.panel{
+				float: left;
+  				display: inline;
+  				height: 500px;
+  				width: 295px;
+  				padding: 20px 20px 25px 25px;
+  				background-color: rgba(255,255,255,0.95);
+  				background-color: #fff\9;
+  				filter: alpha(opacity=95);
+  				border: 1px solid #e6e6e6;
+  				box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  				border-radius: 6px;
+  				position: relative;
+  				font-size: 14px;
+  				z-index: 3;
+			}
+			.crumb{
+				padding: 13px 0px 18px;
+				line-height: 20px;
+				color: #d2d2d2;
+			}
+			.panel .crumb{
+				margin: 0 -10px;
+			}
+			.panel .crumb a{
+				text-decoration: none;
+				cursor: pointer;
+				margin: 0 3px;
+			}
+			.crumb a{
+				padding: 2px 0;
+				margin: 0 5px;
+				color: #666;
+				font-size: 14px;
+			}
+			.crumb a.current{
+				display: inline-block;
+				color: #ffa800
+			}
+			.crumb a.current, .crumb a:hover{
+				border-bottom: 2px solid #ffc734;
+			}
+			.address-box{
+				line-height: 26px;
+			}
+			.address-box-select{
+				line-height: 16px;
+			}
+			.panel .s-title{
+				font-size: 16px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ss-title{
+				font-size: 14px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ul_s li{
+				margin: 8px 0;
+			}
+			.panel span{
+				display: inline-block;
+			}
+			.icon-sj{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/sj.png");
+				margin-right:0.8rem
+			}
+			.icon-rt{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/ren.png");
+				margin-right:0.8rem;
+			}
+			.icon-map{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/dz.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.icon-delete{
+				width:2rem;
+				height:2rem;
+				display: inline-block; 
+				position:absolute;
+				background-size:100% auto; 
+				background-image: url("../../resources/images/icons-png/delete.png");
+			}
+			.add-ipt{
+				line-height: 26px;
+				margin-left: 1.66em;
+				margin-top: 10px;
+				width: 200px;
+			}
+			.add-ipt input, textarea{
+				background: none;
+				width: auto;
+				min-width: 190px;
+				border: 1px solid #ffa200;
+				padding-left: 1px;
+			}
+			.panel .ul_s li .last input{
+				width: 90px;
+				min-width: 0;
+			}
+			.panel .ul_s li .last textarea{
+				word-break: break-all;
+ 				word-wrap: break-word;
+			}
+			.main-left{
+				float: left;
+				position: relative;
+				width: 300px;
+			}
+			.second-left{
+				margin-left: 100px;
+				float: left;
+				position: relative;
+				width: 300px;
+			}
+			.bw{
+				border: none;
+				overflow-y: hidden;
+			}
+			.ss-title .icon-map{margin-bottom: 26px;} 
+			.dd-pages{
+				height: 18px;
+				margin-top: 10px;
+				_overflow:hidden;
+			}
+			.dd-pages span.btn-updown{
+				width: 39px;
+				height: 18px;
+				margin-right: 12px;
+				background: url("../../resources/images/pic-web/pages.gif") no-repeat 0 0;
+				vertical-align: text-bottom;
+				position: relative;
+			}
+			.dd-pages span.pages_num{
+				height: 18px;
+				vertical-align: bottom;
+			}
+			.dd-pages span.pages_num b{
+				font-family: Georgia, "Times New Roman", Times, serif;
+ 	 			font-size: 16px;
+  				font-weight: normal;
+  				position: relative;
+  				top: -5px;
+			}
+			.dd-pages span.pages_num b.pf{
+				right: -2px;
+			}
+			.dd-pages span.pages_num b.pb{
+				left: -2px;
+			}
+			.dd-pages span.pages_num i{
+				width: 8px;
+				height: 15px;
+				display: inline-block;
+				background: url("../../resources/images/pic-web/i.gif") no-repeat 0 0;
+			}
+			.btn-updown a{
+				text-decoration: none;
+				cursor: pointer;
+				display: inline-block;
+  				width: 17px;
+ 				height: 17px;
+  				line-height: 200px;
+  				position: absolute;
+  				left: 0px;
+  				top: 0;
+  				overflow: hidden;
+			}
+			</style>
+			<style type="text/css">
+			.send-item-select-d input{
+				width: 220px;
+  				height: 36px;
+  				padding: 8px 0 8px 10px;
+  				border: 1px solid #c0c0c0;
+ 				background: #fff;
+  				font-size: 14px;
+  				line-height: 18px;
+  				color: #323232;
+			}
+			.detail-ipt textarea{
+				width: 200px;
+  				padding: 8px 0 8px 10px;
+ 				background: #fff;
+  				font-size: 14px;
+  				line-height: 18px;
+  				color: #323232;
+  				border: none;
+  				cursor: pointer;
+			}
+			.send-item-select-d span{
+				border-radius: 3px;
+				display: block;
+  				width: 220px;
+  				height:36px;
+  				padding: 5px 5px;
+  				border: 1px solid #c0c0c0;
+  				font-size: 14px;
+  				line-height: 18px;
+  				color: #323232;
+  				background: #fff url("../../resources/images/pic-web/icon_arrowdrop.png") no-repeat 200px center;
+  				cursor: pointer;
+			}
+			.send-item-select-d .dp{
+				position: absolute;
+				left: 0;
+				top: 36px;
+				width: 220px;
+				background: #fff;
+				border: 1px solid #c0c0c0;
+				padding-left:0; 
+			}
+			.send-item-select-d .dp li.first{
+				border-top: 0;
+			}
+			.send-item-select-d .dp li {
+				z-index: 999;
+  				border-top: 1px solid #d7d7d7;
+  				margin-left: 10px;
+			}
+			.send-item-select-d a{
+				height: 36px;
+				display: block;
+  				font-size: 14px;
+  				line-height: 36px;
+  				text-align: left;
+  				color: #323232;
+			}
+			.send-item-select-d{
+				z-index: 1;
+				margin-top: 5px;
+			}
+			.detail-ipt{
+				width: 220px;
+				background: #fff;
+				border: 1px solid #c0c0c0;
+				padding-left: 8px;
+				border-radius: 3px;
+				line-height: 36px;
+				font-size: 14px;
+			}
+			</style>
+			<div class="second-div d-w-990 second-bg z-1">
+				<div class="grid-25" style="float:none">
+					<div class="main-left">
+						<div class="card z-1">
+							<div class="panel" style="margin-left:-300px">
+								<div class="crumb">
+									<a href="" class="current">寄件人地址</a>|
+									<a href="">从列表中选择</a>|
+									<a href="">新增寄件人</a>
+								</div>
+								<div class="address-box-select">
+									<div class="ul_s">
+										<ul style="padding-left:0px;">
+											<li>
+												<div><span class="s-title"><span class="icon-rt"></span>寄件人</span></div>
+												<div class="add-ipt">
+													<input type="text" disabled="disabled" value="马歆雨">
+												</div>
+											</li>
+											<li>
+												<div><span class="s-title"><span class="icon-sj"></span>联系电话</span></div>
+												<div class="add-ipt">
+													<input type="text" disabled="disabled" value="15267000000">
+												</div>
+											</li>
+											<li>
+												<div><span class="s-title"><span class="icon-map"></span>详细地址</span></div>
+												<div class="add-ipt last">
+													<input type="text" disabled="disabled" value="浙江省">-
+													<input type="text" disabled="disabled" value="杭州市">
+												</div>
+												<div class="add-ipt">
+													<textarea cols="3" disabled="disabled">西湖区浙江大学玉泉校区计算机科学与技术学院曹楼111</textarea>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					<div class="second-left">
+						<div class="card z-1">
+							<div class="panel" style="margin-left:-300px">
+								<div class="crumb">
+									<a href="">收件人地址</a>|
+									<a href="" class="current" >从列表中选择</a>|
+									<a href="">新增收件人</a>
+								</div>
+								<div class="address-box">
+									<div class="ul_s">
+										<ul style="padding-left:0px;">
+											<li class="first-li">
+												<div>
+													<span class="ss-title">
+														<span class="icon-rt"></span>马歆雨
+													</span>
+													<span class="ss-title">
+														<span class="icon-sj"></span>15267000000
+													</span>
+													<span class="ss-title"><span class="icon-map"></span><textarea cols="3" disabled="disabled" class="bw">浙江省-杭州市-西湖区浙江大学玉泉校区计算机科学与技术学院曹楼111</textarea></span>
+													<span class="icon-delete"></span>
+												</div>
+											</li>
+											<li class="sd-li" style="margin-top: 30px;">
+												<div>
+													<span class="ss-title">
+														<span class="icon-rt"></span>MA XINYU
+													</span>
+													<span class="ss-title">
+														<span class="icon-sj"></span>13700001122
+													</span>
+													<span class="ss-title"><span class="icon-map"></span><textarea cols="3" disabled="disabled" class="bw">浙江省-杭州市-西湖区浙江大学玉泉校区计算机科学与技术学院曹楼111</textarea></span>
+													<span class="icon-delete"></span>
+												</div>
+											</li>
+											<li class="sd-li" style="margin-top: 30px;">
+												<div>
+													<span class="ss-title">
+														<span class="icon-rt"></span>李晓明
+													</span>
+													<span class="ss-title">
+														<span class="icon-sj"></span>13700001122
+													</span>
+													<span class="ss-title"><span class="icon-map"></span><textarea cols="3" disabled="disabled" class="bw">内蒙古自治区-包头市-随便写一个地址当做测试好了123-83120</textarea></span>
+													<span class="icon-delete"></span>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="dd-pages">
+										<span class="btn-updown">
+											<a href="#" >上一页</a>
+											<a href="#" style="left:22px">下一页</a>
+										</span>
+										<span class="pages_num">
+											<b class="pf">1</b>
+											<i></i>
+											<b class="pb">2</b>
+										</span>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					<div class="second-left">
+						<div class="card z-1">
+							<div class="panel" style="margin-left:-300px;height:420px">
+								<div class="crumb">
+									<a href="" class="current">其他信息填写</a>
+								</div>
+								<div class="address-box">
+									<div class="ul_s">
+										<ul style="padding-left:0px;">
+											<li>
+												<div>
+													<span class="s-title">承运公司</span>
+													<div id="cmp-c" class="send-item-select-d" style="position:relative">
+														<input type="text" value="-1" readonly="readonly" style="display:none">
+														<span class="inputtext"><div style="height:20px;padding-top:3.5px;padding-left:5px">中通快递</div></span>
+														<ul class="dp" style="display:none">
+															<li class="first">
+																<a href="javascript:void(0);">中通快递</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">圆通快递</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">顺丰快递</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">汇通快递</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">EMS快递</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div>
+													<span class="s-title">货品种类</span>
+													<div id="cmp-s" class="send-item-select-d" style="position:relative;z-index:-1">
+														<input type="text" value="-1" readonly="readonly" style="display:none">
+														<span class="inputtext"><div style="height:20px;padding-top:3.5px;padding-left:5px">食品</div></span>
+														<ul class="dp" style="display:none">
+															<li class="first">
+																<a href="javascript:void(0);">食品</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">药品</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">电子产品/器件</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">服饰</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">文件</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">贵重物品</a>
+															</li>
+															<li>
+																<a href="javascript:void(0);">其他</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div>
+													<span class="s-title">货品名称</span>
+													<div class="detail-ipt">
+														<input type="text" value="重要文件">
+													</div>
+												</div>
+											</li>
+											<li>
+												<div>
+													<span class="s-title">备注</span>
+													<div class="detail-ipt">
+														<textarea cols="3" type="text"></textarea>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="s-btns z-1">
+								<a href="" class="search-a-btn" style="margin-left:-300px;margin-top:450px;width:295px;">提交下单</a>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+		$("#srv").mouseover(function(){
+			$("#srv").children("div").css('display','block');
+		});
+		$("#srv").mouseout(function(){
+			$("#srv").children("div").css('display','none');
+		});
+		$("body").bind("click",function(e){
+			if($(e.target).parents("#cmp-c").length != 0 ){
+				$("#cmp-c").children("ul").css('display','block');
+				$("#cmp-s").children("ul").css('display','none');
+			}
+			else if($(e.target).parents("#cmp-s").length != 0){
+				$("#cmp-s").children("ul").css('display','block');
+				$("#cmp-c").children("ul").css('display','none');
+			}else{
+				$("#cmp-c").children("ul").css('display','none');
+				$("#cmp-s").children("ul").css('display','none');
+			}
+		});
+		</script>
+	</body>
+</html>

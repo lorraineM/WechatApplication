@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ziniu.logistics.web.dao.ShippingRequestDao">
+
+	<insert id="insert" parameterType="com.ziniu.logistics.web.vo.ShippingRequestVo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		ShippingRequest
+		(
+		version,
+		createTime,
+		lastUpdateTime,
+		orderSource,
+		senderProvince,
+		itemName,
+		udf1,
+		udf2,
+		itemWeight,
+		receiverCounty,
+		receiverManPhone,
+		remark3,
+		senderManPhone,
+		udf5,
+		remark1,
+		remark2,
+		senderManAddress,
+		receiverMan,
+		senderCounty,
+		logisticsProviderCode,
+		receiverPostcode,
+		receiverCity,
+		userId,
+		mainId,
+		machineCode,
+		needFetch,
+		udf7,
+		senderPostcode,
+		orderId,
+		udf4,
+		senderCity,
+		itemCount,
+		udf6,
+		udf8,
+		senderMan,
+		remark,
+		isReprint,
+		udf3,
+		receiverManAddress,
+		receiverProvince,
+		errorCode,
+		errorDesc,
+		eShippingOrderString,
+		result,
+		printResult,
+		shippingStatus,
+		mailNo,
+		username
+		) values (
+		0,
+		#{createTime,jdbcType=TIMESTAMP},
+		#{lastUpdateTime,jdbcType=TIMESTAMP},		
+		#{orderSource,jdbcType=VARCHAR},
+		#{senderProvince,jdbcType=VARCHAR},
+		#{itemName,jdbcType=VARCHAR},
+		#{udf1,jdbcType=VARCHAR},
+		#{udf2,jdbcType=VARCHAR},
+		#{itemWeight,jdbcType=VARCHAR},
+		#{receiverCounty,jdbcType=VARCHAR},
+		#{receiverManPhone,jdbcType=VARCHAR},
+		#{remark3,jdbcType=VARCHAR},
+		#{senderManPhone,jdbcType=VARCHAR},
+		#{udf5,jdbcType=VARCHAR},
+		#{remark1,jdbcType=VARCHAR},
+		#{remark2,jdbcType=VARCHAR},
+		#{senderManAddress,jdbcType=VARCHAR},
+		#{receiverMan,jdbcType=VARCHAR},
+		#{senderCounty,jdbcType=VARCHAR},
+		#{logisticsProviderCode,jdbcType=VARCHAR},
+		#{receiverPostcode,jdbcType=VARCHAR},
+		#{receiverCity,jdbcType=VARCHAR},
+		#{userId,jdbcType=NUMERIC},
+		#{mainId,jdbcType=NUMERIC},
+		#{machineCode,jdbcType=VARCHAR},
+		#{needFetch,jdbcType=NUMERIC},
+		#{udf7,jdbcType=VARCHAR},
+		#{senderPostcode,jdbcType=VARCHAR},
+		#{orderId,jdbcType=VARCHAR},
+		#{udf4,jdbcType=VARCHAR},
+		#{senderCity,jdbcType=VARCHAR},
+		#{itemCount,jdbcType=VARCHAR},
+		#{udf6,jdbcType=VARCHAR},
+		#{udf8,jdbcType=VARCHAR},
+		#{senderMan,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR},
+		#{isReprint,jdbcType=NUMERIC},
+		#{udf3,jdbcType=VARCHAR},
+		#{receiverManAddress,jdbcType=VARCHAR},
+		#{receiverProvince,jdbcType=VARCHAR},
+		#{errorCode,jdbcType=VARCHAR},
+		#{errorDesc,jdbcType=VARCHAR},
+		#{eShippingOrderString,jdbcType=VARCHAR},
+		#{result,jdbcType=VARCHAR},
+		#{printResult,jdbcType=VARCHAR},
+		#{shippingStatus,jdbcType=VARCHAR},
+		#{mailNo,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.ziniu.logistics.web.vo.ShippingRequestVo">
+		update ShippingRequest
+		set
+		version=version+1,
+		lastUpdateTime=SYSDATE(),
+		orderSource=#{orderSource,jdbcType=VARCHAR},
+		senderProvince=#{senderProvince,jdbcType=VARCHAR},
+		itemName=#{itemName,jdbcType=VARCHAR},
+		udf1=#{udf1,jdbcType=VARCHAR},
+		udf2=#{udf2,jdbcType=VARCHAR},
+		itemWeight=#{itemWeight,jdbcType=VARCHAR},
+		receiverCounty=#{receiverCounty,jdbcType=VARCHAR},
+		receiverManPhone=#{receiverManPhone,jdbcType=VARCHAR},
+		remark3=#{remark3,jdbcType=VARCHAR},
+		senderManPhone=#{senderManPhone,jdbcType=VARCHAR},
+		udf5=#{udf5,jdbcType=VARCHAR},
+		remark1=#{remark1,jdbcType=VARCHAR},
+		remark2=#{remark2,jdbcType=VARCHAR},
+		senderManAddress=#{senderManAddress,jdbcType=VARCHAR},
+		receiverMan=#{receiverMan,jdbcType=VARCHAR},
+		senderCounty=#{senderCounty,jdbcType=VARCHAR},
+		logisticsProviderCode=#{logisticsProviderCode,jdbcType=VARCHAR},
+		receiverPostcode=#{receiverPostcode,jdbcType=VARCHAR},
+		receiverCity=#{receiverCity,jdbcType=VARCHAR},
+		userId=#{userId,jdbcType=NUMERIC},
+		mainId=#{mainId,jdbcType=NUMERIC},
+		machineCode=#{machineCode,jdbcType=VARCHAR},
+		needFetch=#{needFetch,jdbcType=NUMERIC},
+		udf7=#{udf7,jdbcType=VARCHAR},
+		senderPostcode=#{senderPostcode,jdbcType=VARCHAR},
+		orderId=#{orderId,jdbcType=VARCHAR},
+		udf4=#{udf4,jdbcType=VARCHAR},
+		senderCity=#{senderCity,jdbcType=VARCHAR},
+		itemCount=#{itemCount,jdbcType=VARCHAR},
+		udf6=#{udf6,jdbcType=VARCHAR},
+		udf8=#{udf8,jdbcType=VARCHAR},
+		senderMan=#{senderMan,jdbcType=VARCHAR},
+		remark=#{remark,jdbcType=VARCHAR},
+		isReprint=#{isReprint,jdbcType=NUMERIC},
+		udf3=#{udf3,jdbcType=VARCHAR},
+		receiverManAddress=#{receiverManAddress,jdbcType=VARCHAR},
+		receiverProvince=#{receiverProvince,jdbcType=VARCHAR},
+		errorCode=#{errorCode,jdbcType=VARCHAR},
+		errorDesc=#{errorDesc,jdbcType=VARCHAR},
+		eShippingOrderString=
+		#{eShippingOrderString,jdbcType=VARCHAR},
+		result=
+		#{result,jdbcType=VARCHAR},
+		printResult=#{printResult,jdbcType=VARCHAR},
+		shippingStatus=#{shippingStatus,jdbcType=VARCHAR},
+		mailNo=#{mailNo,jdbcType=VARCHAR},
+		username=#{username,jdbcType=VARCHAR}
+		where id=#{id}
+		and
+		version=#{version}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from
+		ShippingRequest where id=#{id}
+	</delete>
+
+	<select id="get" resultType="com.ziniu.logistics.web.vo.ShippingRequestVo"
+		parameterType="java.lang.Long">
+		select * from ShippingRequest where
+		id=#{id}
+	</select>
+	<select id="findByOrderId" resultType="com.ziniu.logistics.web.vo.ShippingRequestVo"
+		parameterType="java.lang.Long">
+		select * from ShippingRequest
+		where
+		orderId=#{orderId,jdbcType=VARCHAR} and
+		orderSource=#{orderSource,jdbcType=VARCHAR}
+	</select>
+
+	<select id="findByMailNo" resultType="com.ziniu.logistics.web.vo.ShippingRequestVo">
+		select * from ShippingRequest
+		where
+		mailNo=#{mailNo,jdbcType=VARCHAR} and
+		logisticsProviderCode=#{logistProviderCode,jdbcType=VARCHAR}
+	</select>
+
+	<sql id="whereSO">
+		<where>
+			<if test=" createTimeBegin!=null and createTimeBegin!='' ">
+                <![CDATA[
+                and t.createTime >= #{createTimeBegin}
+                ]]>
+			</if>
+			<if test=" createTimeEnd!=null and createTimeEnd!='' ">
+                <![CDATA[
+                and t.createTime < #{createTimeEnd}
+                ]]>
+			</if>
+			<if test="logisticsProviderCode !=null and logisticsProviderCode !=''">
+				and t.logisticsProviderCode =#{logisticsProviderCode}
+			</if>
+			<if test="mailNo !=null and mailNo !=''">
+				and t.mailNo =#{mailNo}
+			</if>
+			<if test="printResult !=null and printResult !=''">
+				and t.printResult =#{printResult}
+			</if>
+			<if test="result !=null and result !=''">
+				and t.result =#{result}
+			</if>
+			<if test="receiverManPhone !=null and receiverManPhone !=''">
+				and t.receiverManPhone =#{receiverManPhone}
+			</if>
+			<if test="senderManPhone !=null and senderManPhone !=''">
+				and t.senderManPhone =#{senderManPhone}
+			</if>
+			<if test="orderSource !=null and orderSource !=''">
+				and t.orderSource =#{orderSource}
+			</if>
+			<if test="receiverMan !=null and receiverMan !=''">
+				and t.receiverMan like concat('%',#{receiverMan},'%')
+			</if>
+			<if test="machineCode !=null and machineCode !=''">
+				and t.machineCode =#{machineCode}
+			</if>
+			<if test="senderMan !=null and senderMan !=''">
+				and t.senderMan like concat('%',#{senderMan},'%')
+			</if>
+			<if test="orderId !=null and orderId !=''">
+				and t.orderId =#{orderId}
+			</if>
+
+			<if test="userId !=null and userId !='' ">
+				and (
+				t.userId = #{userId} or t.mainId=#{userId}
+				)
+			</if>
+			<if test="printResultFlag !=null and printResultFlag">
+				and (t.printResult in
+				<foreach collection="printResults" item="printResult" index="index"
+					open="(" separator="," close=")">
+					#{printResult}
+				</foreach>
+				)
+			</if>
+			<if test="keywords !=null and keywords !='' ">
+				and (
+				t.orderId =#{keywords}
+				or
+				t.machineCode =#{keywords}
+				or
+				t.receiverMan =#{keywords}
+				or
+				t.senderMan =#{keywords}
+				or
+				t.receiverManPhone =#{keywords}
+				or
+				t.senderManPhone =#{keywords}
+				or
+				t.mailNo =#{keywords}
+				)
+			</if>
+		</where>
+	</sql>
+	<sql id="getList">
+		select t.*,u.username from ShippingRequest t left join
+		user u on t.userId = u.id
+		<include refid="whereSO" />
+		order by t.createtime desc
+	</sql>
+	<select id="getPageList" resultType="com.ziniu.logistics.web.vo.ShippingRequestVo"
+		parameterType="com.ziniu.logistics.web.so.ShippingRequestSO">
+		<include refid="getList" />
+		limit #{firstNumber}, #{objectsPerPage}
+	</select>
+	<select id="getCount" resultType="int"
+		parameterType="com.ziniu.logistics.web.so.ShippingRequestSO">
+		select count(1) from ShippingRequest t left join user u
+		on t.userId = u.id
+		<include refid="whereSO" />
+	</select>
+	
+	<resultMap id="shippingRequest" type="com.ziniu.logistics.web.vo.ShippingRequestVo">
+		<id column="id" property="id"/>
+		<result column="version" property="version" />
+		<result column="createTime" property="createTime" />
+		<result column="lastUpdateTime" property="lastUpdateTime" />
+		<result column="orderSource" property="orderSource" />
+		<result column="senderProvince" property="senderProvince" />
+		<result column="itemName" property="itemName" />
+		<result column="udf1" property="udf1" />
+		<result column="udf2" property="udf2" />
+		<result column="itemWeight" property="itemWeight" />
+		<result column="receiverCounty" property="receiverCounty" />
+		<result column="receiverManPhone" property="receiverManPhone" />
+		<result column="remark3" property="remark3" />
+		<result column="senderManPhone" property="senderManPhone" />
+		<result column="udf5" property="udf5" />
+		<result column="remark1" property="remark1" />
+		<result column="remark2" property="remark2" />
+		<result column="senderManAddress" property="senderManAddress" />
+		<result column="receiverMan" property="receiverMan" />
+		<result column="senderCounty" property="senderCounty" />
+		<result column="logisticsProviderCode" property="logisticsProviderCode" />
+		<result column="receiverPostcode" property="receiverPostcode" />
+		<result column="receiverCity" property="receiverCity" />
+		<result column="userId" property="userId" />
+		<result column="mainId" property="mainId" />
+		<result column="machineCode" property="machineCode" />
+		<result column="needFetch" property="needFetch" />
+		<result column="udf7" property="udf7" />
+		<result column="senderPostcode" property="senderPostcode" />
+		<result column="orderId" property="orderId" />
+		<result column="udf4" property="udf4" />
+		<result column="senderCity" property="senderCity" />
+		<result column="itemCount" property="itemCount" />
+		<result column="udf6" property="udf6" />
+		<result column="udf8" property="udf8" />
+		<result column="senderMan" property="senderMan" />
+		<result column="remark" property="remark" />
+		<result column="isReprint" property="isReprint" />
+		<result column="udf3" property="udf3" />
+		<result column="receiverManAddress" property="receiverManAddress" />
+		<result column="receiverProvince" property="receiverProvince" />
+		<result column="errorCode" property="errorCode" />
+		<result column="errorDesc" property="errorDesc" />
+		<result column="eShippingOrderString" property="eShippingOrderString" />
+		<result column="result" property="result" />
+		<result column="printResult" property="printResult" />
+		<result column="shippingStatus" property="shippingStatus" />
+		<result column="mailNo" property="mailNo" />
+		<result column="username" property="username" />
+	</resultMap>
+	<select id="getAllOrder" resultMap="shippingRequest" parameterType="java.lang.String">
+		select * from ShippingRequest where username=#{username,jdbcType=VARCHAR} order by createTime desc 
+	</select>
+
+</mapper>

@@ -1,0 +1,1091 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>快递下单Demo</title>
+		<meta name="author" content="xxx" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"  />
+		<script type="text/javascript" src="../../resources/js/jquery.min.js"  ></script>
+		<script type="text/javascript" src="../../resources/js/bootstrap.min.js" ></script>
+		<style type="text/css">
+		.top_header{
+			width:100%;
+			height:26px;
+			background:#f5f5f5;
+			background:-moz-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-webkit-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-o-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-ms-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			filter:
+				progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');
+			border-bottom:1px solid #dcdcdc;
+			_overflow:hidden;
+		}
+		.top_header-wrap{
+			height:26px;
+			background:#f5f5f5;
+			background:-moz-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-webkit-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-o-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:-ms-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			background:linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);
+			filter:
+				progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');
+			border-bottom:1px solid #dcdcdc;
+		}
+		.top_header .toplink{
+			float:left;
+			width:300px;
+			line-height:14px;
+			height:14px;
+			padding:6px 0;
+		}
+		.topbar-wrap .toplink a{
+			display:block;
+			font-size:12px;
+			height:14px;
+			line-height:14px;
+			vertical-align:middle;
+		}
+		.d-w-990{
+			width: 990px;
+			margin: 0 auto;
+		}
+		.z-1{
+			zoom:1;
+		}
+		.header{
+			width:100%;
+			height:78px;
+			background-color:#ffffff;
+		}
+		.header-wrap{
+			height:60px;
+			padding-top:18px;
+		}
+		header{
+			margin:0;
+			padding:0;
+			display:block;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			margin: 0; padding: 0;
+		}
+		nav{
+			margin:0;
+			padding:0;
+			display:block;
+		}
+		body{
+			margin:0;
+			padding:0;
+			font: 12px/1.5 tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+		}
+		div{
+			margin:0;padding:0;
+		}
+		table{
+			border-collapse:collapse;
+			border-spacing:0;
+		}
+		select{font-size: 100%;}
+		em{ font-weight: 500; font-style: normal;}
+		.topmenu{float:right;padding:6px 0;color:#666666;position:relative;z-index:1000;}.topmenu-item{float:left;padding:1px 15px;line-height:12px;_line-height:14px;border-left:1px solid #fefefe;border-right:1px solid #e2e2e2;}.topmenu-item-first{border-left:none;border-right:none;}.topmenu-item-first .split{padding:0 5px;color:#666;}.topmenu-item-last{border-right:none;padding-right:0;}.topmenu-item-dropdown{position:relative;border-left:1px solid #e2e2e2;border-right:1px solid #e2e2e2;}.topmenu-item-dropdown:hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}.topmenu-item-dropdown-hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}.topmenu-item-dropdown a{float:left;zoom:1;}.topmenu-item-dropdown .icon-dropdown{width:12px;height:12px;display:inline-block;line-height:10px;overflow:hidden;vertical-align:middle;zoom:1;background-position:-452px -117px;}.topmenu-item-dropdown a:hover{text-decoration:none;}.topmenu-item-dropdown a:hover .icon-dropdown{background-position:-445px -60px;}.topmenu-item-dropdown-hover .icon-dropdown{background-position:-445px -60px;}.topmenu-item-dropdown ul{display:none;position:absolute;background-color:#fff;}.topmenu-item-dropdown:hover ul{padding-top:8px;*padding-top:6px;padding-bottom:2px;padding-left:15px;padding-right:27px;display:block;border-bottom:1px solid #ccc;left:-1px;top:16px;border-left:1px solid #ccc;border-right:1px solid #ccc;background-color:#ffffff;}.topmenu-item-dropdown-hover ul{padding-top:8px;*padding-top:6px;padding-bottom:2px;padding-left:15px;padding-right:27px;display:block;border-bottom:1px solid #ccc;left:-1px;top:16px;border-left:1px solid #ccc;border-right:1px solid #ccc;background-color:#ffffff;}.topmenu-item-dropdown ul li{line-height:21px;*line-height:18px;width:60px;}.topmenu-item-dropdown ul li a{display:block;}.topmenu-item-dropdown ul li a:hover{color:#ff6600;background-color:#ffffff;}.header{width:100%;height:78px;background-color:#ffffff;}
+		.sl-shadow{
+			-moz-box-shadow:0 0 4px #999999;
+			-o-box-shadow:0 0 4px #999999;
+			-webkit-box-shadow:0px 0px 4px #999999;
+			box-shadow:0px 0px 4px #999999;
+			-ms-filter:"progid:DXImageTransform.Microsoft.Glow(color=#a0a0a0,strength=0) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2)";
+			*filter:progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2);
+			}:root .sl-shadow{
+				filter:none\9;
+		}
+		.tab-div ul{list-style:none;background:#f6f8fa;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f9fbfd', endColorStr='#f1f3f6', gradientType='0');background:-moz-linear-gradient(top,#f9fbfd,#f1f3f6);background:-o-linear-gradient(top,#f9fbfd,#f1f3f6);background:-webkit-gradient(linear,0 0,0 100%,from(#f9fbfd),to(#f1f3f6));border-top:1px solid #E5E5E5;border-right:1px solid #E5E5E5;border-left:1px solid #E5E5E5;border-bottom:1px solid #E6E6E6}
+		.tab-div li{float:left;vertical-align:middle}
+		.tab-item a{font-size:14px;line-height:33px;height:33px;padding:0 20px;border-right:1px solid #E5E5E5;color:#666;display:inline-block;*display:inline;*zoom:1;transition:all .4s ease-out}.tab-item a:hover{text-decoration:none;background:#fefefe;color:#4d4d4d}.tab-item-current a,.tab-item-current a:hover{font-weight:700;background:#fcfcfc;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#fefefe', endColorStr='#fafafa', gradientType='0');background:-moz-linear-gradient(top,#fefefe,#fafafa);background:-o-linear-gradient(top,#fefefe,#fafafa);background:-webkit-gradient(linear,0 0,0 100%,from(#fefefe),to(#fafafa));position:relative;top:1px;color:#4d4d4d}
+		.nav-item-table{white-space:nowrap;background-repeat:repeat;background-attachment:scroll;background-position:0 0;}.nav-item-table td{border-right:1px solid #e7e7e7;padding:2px 14px;white-space:nowrap;}.nav-item-table th{border-right:1px solid #e7e7e7;padding:0 12px 2px 15px;white-space:nowrap;font-weight:700;border-collapse:separate;}.nav-item-table th.last{border-right:none;}.nav-item-table td.last{border-right:none;}.nav-item-table a{color:#898989;display:block;padding-left:3px;position:relative;vertical-align:middle;}.nav-item-table a:hover{background-color:#aaaaaa;border-radius:2px 2px 2px 2px;color:#FFFFFF;text-decoration:none;vertical-align:middle;}.nav-item .nav-item-sub{display:none;}
+		.nav{width:550px;height:45px;float:right;position:relative;z-index:999;}
+		.nav-item{float:left;height:45px;position:relative;}
+		.nav-item .nav-item-link{
+			height:45px;
+			display:block;
+			text-indent:-9999em;
+			overflow:hidden;
+			background-repeat:no-repeat;
+			z-index: 10;
+		}
+		.nav-item .nav-item-link:hover{background-repeat:no-repeat;}
+		.nav-item .nav-item-link-active{background-repeat:no-repeat;}
+		.nav-item-sub{
+			position:absolute;
+			padding:9px 3px;
+			top:45px;
+			background-color:#fff;
+			z-index: 20;
+		}
+		#home .nav-item-link {
+			background-image: url("../../resources/images/pic-web/shouye-a.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#send .nav-item-link {
+			background-image: url("../../resources/images/pic-web/jisong.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#srv .nav-item-link {
+			background-image: url("../../resources/images/pic-web/guanli.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#search .nav-item-link {
+			background-image: url("../../resources/images/pic-web/search.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		#about .nav-item-link {
+			background-image: url("../../resources/images/pic-web/about.png");
+			width: 90px;
+			margin-right: 20px;
+		}
+		td.last{
+			border-right:none;
+		}
+		.nav-item .angle{position:absolute;display:none;width:15px;height:15px;font-size:0;top:35px;*top:36px;_top:38px;top:38px\0;right:65px;overflow:hidden;background-position:-418px -72px;}:root .angle{top:35px;}
+		.nav-item:hover .angle{display:block;}.nav-item-hover .angle{display:block;}
+		.sub-header{
+			position: relative;
+			z-index: 1;
+			background-color: rgba(255,255,255,.7);
+			box-shadow: 0 1px 2px rgba(0,0,0,.8);
+			height: 32px;
+			margin-bottom: 15px;
+			line-height: 32px;
+		}
+		.sub-nav{
+			margin: 0 auto;
+			width: 990px;
+			list-style: none;
+			padding: 0;
+			font-size: 12px;
+			position: relative;
+			float: none;
+		}
+		.sub-nav-item{
+			float: left;
+			color: #676d70;
+		}
+		.sub-nav-item a{
+			-webkit-border-radius: 2px;
+			border-radius: 3px;
+			color: #676d70;
+			display: block;
+			line-height: 16px;
+			line-height: 15px \0;
+			margin-top: 3px;
+			padding: 5px 25px 6px;
+			text-decoration: none;
+		}
+		.sub-nav-item-current{
+			border-radius: 3px;
+			background-color: rgba(61,71,74,.6);
+			color: #fff;
+		}
+		.sub-nav-item-current a{
+			color:#fff;
+		}
+		.main-container{
+			color: #666;
+			padding-top: 0;
+			height: auto;
+			margin-top: -47px;
+			/*background-color: #eee;*/
+		}
+		.main-container .banner{
+			background: url("../../resources/images/pic-web/yellow.jpg") no-repeat center;*/
+			padding-top: 42px;
+			color: #fff;
+			border-bottom: 1px solid #eee;
+			position: relative;
+		}
+		.grid-25{
+			width: 990px;
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 0;
+			display: inline;
+		}
+		.small-title{
+			display: block;
+			overflow: hidden;
+			position: relative;
+			color: #4d4d4d;
+			clear: both;
+		}
+		.z-1:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+		.address-table{
+			width: 100%;
+		}
+		.address-table .time{
+			padding-left: 20px;
+			width: 60px;
+			text-align: left;
+		}
+		.address-table .last{
+			text-align: right;
+			padding-right: 20px;
+		}
+		.address-table td .memo{
+			text-align: center;
+		}
+		.address-table thead th{
+			border-bottom: 1px solid #ccc;
+			height: 30px;
+			line-height: 30px;
+			background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f8f8f8),color-stop(1,#f2f2f2));
+			font-style: normal;
+			font-weight: 500;
+			font-size: 12px;
+		}
+		.address-table tbody td{
+			vertical-align: top;
+			padding: 10px 0;
+			border-bottom: 1px solid #e6e6e6;
+		}
+		.second-div{
+			margin-top: 20px;
+		}
+		.ft-gray{
+			color: #9a9a9a;
+		}
+		#address-bd p{
+			font-size: 12px;
+		}
+		.d-add{
+			word-break: break-all;
+			word-wrap: break-word;
+		}
+		.ft-bar{
+			margin: 0 5px;
+			padding: 0;
+			color: #aaa;
+		}
+		.split{
+			background-color: #fdfaf5;
+		}
+
+		.btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+		.btns a{
+			width: 140px;
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			background-color: #ffa800;
+			text-decoration: none;
+		}
+		.address-add-btn{
+			display: inline-block;
+			border: none;
+			border-radius: 3px;
+			overflow: visible;
+			font-size: 14px;
+			color: #fff;
+			text-align: center;
+			cursor: pointer;
+		}
+		.address-search-form{
+			position: relative;
+			margin-bottom: 0;
+		}
+		.address-search-max{
+			background-color: #fdfdfd;
+			padding: 20px 10px;
+		}
+		.form-item{
+			padding: 0;
+			vertical-align: top;
+			zoom: 1;
+			font-family: tahoma,\5b8b\4f53,\9ED1\4F53,"Hei",sans-serif;
+		}
+		.fn-left{
+			float: left;
+		}
+		.form-item .form-label{
+			width: 80px;
+		}
+		.address-search-form{
+			border-top: 2px solid #b3cfee;
+			border-bottom: 1px solid #cbdaea;
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		.address-search-form .form-label{
+			float: left;
+			height: 28px;
+			line-height: 28px;
+			font-weight: 700;
+			text-align: right;
+			vertical-align: top;
+			color: #4d4d4d;
+		}
+		.address-search-form .form-item-content{
+			float: left;
+			width: 150;
+		}
+		/**/
+		.select-trigger {
+        	background-image:url("../../resources/images/pic-web/additional.png");
+        	background-repeat:no-repeat;
+        	background-position:right -529px;
+        	display:inline-block;
+        	text-decoration:none;
+        	font-size:12px;
+        	border: 1px solid #eee;
+        	padding:0 29px 0 10px;
+        	font-family:tahoma;
+        	height:26px;
+        	line-height:26px;
+        	border:1px solid #ccc;
+        	color:#4d4d4d;
+        	cursor:pointer;
+        	vertical-align: middle;
+        	*margin-bottom:3px;
+        	word-break:keep-all;/* 不换行 */
+        	white-space:nowrap;/* 不换行 */
+        	overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+        	text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+
+    	}
+    	.select-item{
+    		width: 100px;
+    		margin-left: 10px;
+    		padding-left:10px;
+    	}
+    	.select-trigger:hover {
+        	border-color:#a6a6a6;
+        	text-decoration:none;
+        	color:#4d4d4d;
+    	}
+    	.select-trigger:active {
+        	color:#4d4d4d;
+    	}
+    	.select {
+        	border: 1px solid #eee;
+        	font-family:tahoma;
+        	overflow-y: auto;
+        	overflow-x: hidden;
+        	width: 154px;
+        	_height:expression(this.scrollHeight>252?"253px":"auto");
+        	max-height:253px;
+
+    	}
+    	.form-select{
+    		margin: 0;
+    		padding: 4px;
+    		border: 1px solid #ccc;
+    		height: 28px;
+    	}
+    	.form-item select{
+    		vertical-align: middle;
+    		margin: 4px 0 0;
+    	}
+    	.form-item .input{
+    		height:26px;
+    		font-size: 12px;
+    		color: #595959;
+    		vertical-align: middle;
+    		width: 120px;
+    		margin-left: 10px;
+    	}
+		</style>
+	</head>
+	<body>
+		<div class="top_header">
+			<div class="d-w-990 top_header-wrap z-1">
+				<ul class="topmenu">
+					<li class="topmenu-item topmenu-item-first">
+						欢迎用户:
+					</li>
+					<li class="topmenu-item">
+						<a href="" title="进入我的快递demo">15200000000</a>
+					</li>
+					<li class="topmenu-item">
+						<a seed="logout" href="">退出登录</a>
+					</li>
+					<li class="topmenu-item topmenu-item-last">
+						<a href="" target="_blank" title="常见问题FAQ">常见问题</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<header class="header">
+			<div class="d-w-990 header-wrap z-1">
+				<nav role="navigation">
+					<ul class="nav">
+						<li class="nav-item" id="home">
+							<a href="" class="nav-item-link">首页</a>
+						</li>
+						<li class="nav-item" id="send">
+							<a href="" class="nav-item-link">我要寄件</a>
+						</li>
+						<li class="nav-item" id="srv">
+							<a href="" class="nav-item-link">管理服务</a>
+							<div class="nav-item-sub sl-shadow" style="display:none;">
+								<table class="nav-item-table">
+									<thead></thead>
+									<tbody style="font-size:12px">
+										<tr>
+											<td><a href="">地址管理</a></td>
+											<td class="last"><a href="">运单管理</a></td>
+										</tr>
+										<tr>
+											<td><a href="">公司管理</a></td>
+											<td class="last"><a href="">站点管理</a></td>
+										</tr>
+										<tr>
+											<td class"last"><a href="">公司配置</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="angle sl-angle"></div>
+						</li>
+						<li class="nav-item" id="search">
+							<a href="" class="nav-item-link">快件查询</a>
+						</li>
+						<li class="nav-item" id="about">
+							<a href="" class="nav-item-link">关于我们</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="sub-header">
+			<ul class="sub-nav">
+				<li class="sub-nav-item">
+					<a href="">地址管理</a>
+				</li>
+				<li class="sub-nav-item sub-nav-item-current">
+					<a href="">运单管理</a>
+				</li>
+				<li class="sub-nav-item">
+					<a href="">公司管理</a>
+				</li>
+				<li class="sub-nav-item">
+					<a href="">站点管理</a>
+				</li>
+				<li class="sub-nav-item">
+					<a href="">公司设置</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main-container">
+			<div class="banner">
+				<div class="d-w-990 z-1">
+					<div class="grid-25">
+						<div class="small-title z-1">
+							<h4 style="float:left">服务管理 >> 运单管理</h4>
+							<div style="padding:45px 0 0 100px; float:left; background:url('../../resources/images/pic-web/logistics.png') no-repeat center;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<style type="text/css">
+			.inline-block{
+				display: inline-block;
+				zoom: 1;
+			}
+			.form-item-content .custom-date-input{
+				display: inline-block;
+				zoom: 1;
+			}
+			.form-item .input-len-10{
+				width: 100px;
+			}
+			.fn-hide{
+				display: none;
+			}
+			.ui-select{
+				border: 1px solid #eee;
+  				font-family: tahoma;
+  				overflow-y: auto;
+  				overflow-x: hidden;
+  				width: 154px;
+  				_height: expression(this.scrollHeight>252?"253px":"auto");
+ 			 	max-height: 253px;
+			}
+			.ui-select-mini{
+				width: 100px;
+			}
+			.ui-select-content{
+				background: #f2f2f2;
+			}
+			.ui-select-item:hover{
+				background: #f9f9f9;
+			}
+			.ui-select ul li.ui-select-item-selected{
+				background: #f0f0f0;
+			}
+			.ui-select-item{
+				font-size: 12px;
+  				list-style: none;
+ 			 	height: 28px;
+  				line-height: 28px;
+  				padding: 0 15px 0 10px;
+  				cursor: default;
+  				width: 125px;
+  				background: #fff;
+  				word-break: keep-all;
+  				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+			.option-keyword-label{
+				display: inline-block;
+				margin-left: 2px;
+				vertical-align: middle;
+			}
+			.l-28{
+				line-height: 28px;
+			}
+			.m-10{
+				margin-top: 10px;
+			}
+			.in-0{
+				padding-left: 0;
+				margin-bottom: 0;
+			}
+			</style>
+
+			<div class="second-div d-w-990 z-1">
+				<div class="grid-25">
+					<div>
+						<h5 id="log-M-search-form-t" name="log-M-search-form-t" style="float:left">检索订单</h5>
+					</div>
+					<form id="log-M-search-form" name="log-M-search-form" class="address-search-form address-search-max">
+						<div class="z-1">
+							<div class="z-1">
+								<div class="form-item fn-left">
+									<label class="form-label">添加时间: </label>
+									<div class="form-item-content"  style="width:auto;">
+										<div id="tm-div" name="tm-div" class="inline-block custom-date-input" >
+											<input readonly="readonly" class="input input-len-10" id="beginDate" name="beginDate" value="2015.04.02" autocomplete="off" data-widget-cid="widget-5">
+											<select id="beginTime" name="beginTime" class="form-select fn-hide" autocomplete="off" style="display:none;">
+												<option value="00:00" selected>00:00</option>
+												<option value="01:00">01:00</option>
+												<option value="02:00">02:00</option>
+												<option value="03:00">03:00</option>
+												<option value="04:00">04:00</option>
+												<option value="05:00">05:00</option>
+												<option value="06:00">06:00</option>
+												<option value="07:00">07:00</option>
+												<option value="08:00">08:00</option>
+												<option value="09:00">09:00</option>
+												<option value="10:00">10:00</option>
+												<option value="11:00">11:00</option>
+												<option value="12:00">12:00</option>
+												<option value="13:00">13:00</option>
+												<option value="14:00">14:00</option>
+												<option value="15:00">15:00</option>
+												<option value="16:00">16:00</option>
+												<option value="17:00">17:00</option>
+												<option value="18:00">18:00</option>
+												<option value="19:00">19:00</option>
+												<option value="20:00">20:00</option>
+												<option value="21:00">21:00</option>
+												<option value="22:00">22:00</option>
+												<option value="23:00">23:00</option>
+												<option value="24:00">24:00</option>
+											</select>
+											<a id="tm-1-selector" name="tm-1-selector" class="select-trigger select-item">00:00</a>
+											<div id="tm-1-tg" name="tm-1-tg" class="ui-select ui-select-mini" data-widget-cid="widget-7" style="z-index:99;display:none;position:absolute;margin-left:123px;">
+												<ul class="ui-select-content" data-role="content" style="padding:0;margin:0;">
+													<li data-role="item" class="ui-select-item ui-select-item-selected" data-value="00:00" data-default-selected="true" data-selected="true" data-disabled>00:00</li>
+													<li data-role="item" class="ui-select-item" data-value="01:00" data-default-selected="false" data-selected="false" data-disabled>01:00</li>
+													<li data-role="item" class="ui-select-item" data-value="02:00" data-default-selected="false" data-selected="false" data-disabled>02:00</li>
+													<li data-role="item" class="ui-select-item" data-value="03:00" data-default-selected="false" data-selected="false" data-disabled>03:00</li>
+													<li data-role="item" class="ui-select-item" data-value="04:00" data-default-selected="false" data-selected="false" data-disabled>04:00</li>
+													<li data-role="item" class="ui-select-item" data-value="05:00" data-default-selected="false" data-selected="false" data-disabled>05:00</li>
+													<li data-role="item" class="ui-select-item" data-value="06:00" data-default-selected="false" data-selected="false" data-disabled>06:00</li>
+													<li data-role="item" class="ui-select-item" data-value="07:00" data-default-selected="false" data-selected="false" data-disabled>07:00</li>
+													<li data-role="item" class="ui-select-item" data-value="08:00" data-default-selected="false" data-selected="false" data-disabled>08:00</li>
+													<li data-role="item" class="ui-select-item" data-value="09:00" data-default-selected="false" data-selected="false" data-disabled>09:00</li>
+													<li data-role="item" class="ui-select-item" data-value="10:00" data-default-selected="false" data-selected="false" data-disabled>10:00</li>
+													<li data-role="item" class="ui-select-item" data-value="11:00" data-default-selected="false" data-selected="false" data-disabled>11:00</li>
+													<li data-role="item" class="ui-select-item" data-value="12:00" data-default-selected="false" data-selected="false" data-disabled>12:00</li>
+													<li data-role="item" class="ui-select-item" data-value="13:00" data-default-selected="false" data-selected="false" data-disabled>13:00</li>
+													<li data-role="item" class="ui-select-item" data-value="14:00" data-default-selected="false" data-selected="false" data-disabled>14:00</li>
+													<li data-role="item" class="ui-select-item" data-value="15:00" data-default-selected="false" data-selected="false" data-disabled>15:00</li>
+													<li data-role="item" class="ui-select-item" data-value="16:00" data-default-selected="false" data-selected="false" data-disabled>16:00</li>
+													<li data-role="item" class="ui-select-item" data-value="17:00" data-default-selected="false" data-selected="false" data-disabled>17:00</li>
+													<li data-role="item" class="ui-select-item" data-value="18:00" data-default-selected="false" data-selected="false" data-disabled>18:00</li>
+													<li data-role="item" class="ui-select-item" data-value="19:00" data-default-selected="false" data-selected="false" data-disabled>19:00</li>
+													<li data-role="item" class="ui-select-item" data-value="20:00" data-default-selected="false" data-selected="false" data-disabled>20:00</li>
+													<li data-role="item" class="ui-select-item" data-value="21:00" data-default-selected="false" data-selected="false" data-disabled>21:00</li>
+													<li data-role="item" class="ui-select-item" data-value="22:00" data-default-selected="false" data-selected="false" data-disabled>22:00</li>
+													<li data-role="item" class="ui-select-item" data-value="23:00" data-default-selected="false" data-selected="false" data-disabled>23:00</li>
+													<li data-role="item" class="ui-select-item" data-value="24:00" data-default-selected="false" data-selected="false" data-disabled>24:00</li>
+												</ul>
+											</div>
+											<em class="ft-bar">-</em>
+											<input readonly="readonly" class="input input-len-10" id="endDate" name="endDate" value="2015.04.08" autocomplete="off">
+											<select id="endTime" name="endTime" class="form-select fn-hide" autocomplete="off" style="display:none;">
+												<option value="00:00">00:00</option>
+												<option value="01:00">01:00</option>
+												<option value="02:00">02:00</option>
+												<option value="03:00">03:00</option>
+												<option value="04:00">04:00</option>
+												<option value="05:00">05:00</option>
+												<option value="06:00">06:00</option>
+												<option value="07:00">07:00</option>
+												<option value="08:00">08:00</option>
+												<option value="09:00">09:00</option>
+												<option value="10:00">10:00</option>
+												<option value="11:00">11:00</option>
+												<option value="12:00">12:00</option>
+												<option value="13:00">13:00</option>
+												<option value="14:00">14:00</option>
+												<option value="15:00">15:00</option>
+												<option value="16:00">16:00</option>
+												<option value="17:00">17:00</option>
+												<option value="18:00">18:00</option>
+												<option value="19:00">19:00</option>
+												<option value="20:00">20:00</option>
+												<option value="21:00">21:00</option>
+												<option value="22:00">22:00</option>
+												<option value="23:00">23:00</option>
+												<option value="24:00" selected>24:00</option>
+											</select>
+											<a id="tm-2-selector" name="tm-2-selector" class="select-trigger select-item">24:00</a>
+											<div id="tm-2-tg" name="tm-2-tg" class="ui-select ui-select-mini" data-widget-cid="widget-7" style="z-index:99;display:none;position:absolute;margin-left:369px;">
+												<ul class="ui-select-content" data-role="content" style="padding:0;margin:0;">
+													<li data-role="item" class="ui-select-item ui-select-item-selected" data-value="00:00" data-default-selected="true" data-selected="true" data-disabled>00:00</li>
+													<li data-role="item" class="ui-select-item" data-value="01:00" data-default-selected="false" data-selected="false" data-disabled>01:00</li>
+													<li data-role="item" class="ui-select-item" data-value="02:00" data-default-selected="false" data-selected="false" data-disabled>02:00</li>
+													<li data-role="item" class="ui-select-item" data-value="03:00" data-default-selected="false" data-selected="false" data-disabled>03:00</li>
+													<li data-role="item" class="ui-select-item" data-value="04:00" data-default-selected="false" data-selected="false" data-disabled>04:00</li>
+													<li data-role="item" class="ui-select-item" data-value="05:00" data-default-selected="false" data-selected="false" data-disabled>05:00</li>
+													<li data-role="item" class="ui-select-item" data-value="06:00" data-default-selected="false" data-selected="false" data-disabled>06:00</li>
+													<li data-role="item" class="ui-select-item" data-value="07:00" data-default-selected="false" data-selected="false" data-disabled>07:00</li>
+													<li data-role="item" class="ui-select-item" data-value="08:00" data-default-selected="false" data-selected="false" data-disabled>08:00</li>
+													<li data-role="item" class="ui-select-item" data-value="09:00" data-default-selected="false" data-selected="false" data-disabled>09:00</li>
+													<li data-role="item" class="ui-select-item" data-value="10:00" data-default-selected="false" data-selected="false" data-disabled>10:00</li>
+													<li data-role="item" class="ui-select-item" data-value="11:00" data-default-selected="false" data-selected="false" data-disabled>11:00</li>
+													<li data-role="item" class="ui-select-item" data-value="12:00" data-default-selected="false" data-selected="false" data-disabled>12:00</li>
+													<li data-role="item" class="ui-select-item" data-value="13:00" data-default-selected="false" data-selected="false" data-disabled>13:00</li>
+													<li data-role="item" class="ui-select-item" data-value="14:00" data-default-selected="false" data-selected="false" data-disabled>14:00</li>
+													<li data-role="item" class="ui-select-item" data-value="15:00" data-default-selected="false" data-selected="false" data-disabled>15:00</li>
+													<li data-role="item" class="ui-select-item" data-value="16:00" data-default-selected="false" data-selected="false" data-disabled>16:00</li>
+													<li data-role="item" class="ui-select-item" data-value="17:00" data-default-selected="false" data-selected="false" data-disabled>17:00</li>
+													<li data-role="item" class="ui-select-item" data-value="18:00" data-default-selected="false" data-selected="false" data-disabled>18:00</li>
+													<li data-role="item" class="ui-select-item" data-value="19:00" data-default-selected="false" data-selected="false" data-disabled>19:00</li>
+													<li data-role="item" class="ui-select-item" data-value="20:00" data-default-selected="false" data-selected="false" data-disabled>20:00</li>
+													<li data-role="item" class="ui-select-item" data-value="21:00" data-default-selected="false" data-selected="false" data-disabled>21:00</li>
+													<li data-role="item" class="ui-select-item" data-value="22:00" data-default-selected="false" data-selected="false" data-disabled>22:00</li>
+													<li data-role="item" class="ui-select-item" data-value="23:00" data-default-selected="false" data-selected="false" data-disabled>23:00</li>
+													<li data-role="item" class="ui-select-item" data-value="24:00" data-default-selected="false" data-selected="false" data-disabled>24:00</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-item fn-left">
+									<label class="form-label">承运公司: </label>
+									<div id="cmp-div" name="cmp-div" class="form-item-content">
+										<select class="form-select" style="display:none">
+											<option value="">中通</option>
+											<option value="">圆通</option>
+											<option value="">顺丰</option>
+											<option value="">汇通</option>
+											<option value="">EMS</option>
+										</select>
+										<a id="cmp-selector" name="cmp-selector" class="select-trigger select-item">中通</a>
+										<div id="cmp-tg" name="cmp-tg" class="ui-select ui-select-mini" data-widget-cid="widget-8" style="z-index:99;display:none;position:absolute;margin-left:10px;">
+											<ul class="ui-select-content" data-role="content" style="padding:0;margin:0;">
+												<li data-role="item" class="ui-select-item ui-select-item-selected" data-value="ZTO" data-default-selected="true" data-selected="true" data-disabled>中通</li>
+												<li data-role="item" class="ui-select-item" data-value="YTO" data-default-selected="false" data-selected="false" data-disabled>圆通</li>
+												<li data-role="item" class="ui-select-item" data-value="SF" data-default-selected="false" data-selected="false" data-disabled>顺丰</li>
+												<li data-role="item" class="ui-select-item" data-value="HTKY" data-default-selected="false" data-selected="false" data-disabled>汇通</li>
+												<li data-role="item" class="ui-select-item" data-value="EMS" data-default-selected="false" data-selected="false" data-disabled>EMS</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="z-1">
+								<div class="form-item fn-left" style="350px;">
+									<label class="form-label">打印状态: </label>
+									<div class="form-item-content" style="margin-left:10px;width:250px;">
+										<input class="m-10" type="checkbox" name="p-1" id="" value="" >
+										<label for="p-1" class="option-keyword-label l-28" autocomplete="off">全部</label>
+										<input class="m-10" type="checkbox" name="p-2" id="" value="" >
+										<label for="p-2" class="option-keyword-label l-28" autocomplete="off">未打印</label>
+										<input class="m-10" type="checkbox" name="p-1" id="" value="" >
+										<label for="p-3" class="option-keyword-label l-28" autocomplete="off">打印成功</label>
+										<input class="m-10" type="checkbox" name="p-1" id="" value="" >
+										<label for="p-4" class="option-keyword-label l-28" autocomplete="off">打印失败</label>
+									</div>
+								</div>
+								<div class="form-item fn-left" style="margin-left:19px;width:250px;">
+									<label class="form-label">订单号码: </label>
+									<div class="form-item-content">
+										<input type="text" class="input" style="width:100px;">
+									</div>
+								</div>
+								<div class="form-item fn-left">
+									<div class="form-item-content">
+										<p class="btns">
+											<a href="" class="address-add-btn" style="width:100px;height:26px;font-size:13px;line-height:26px;margin-left:30px;">搜索</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="z-1">
+						<h5 style="float:left">您的订单</h5>
+					</div>
+					<!-- detail slide up/down -->
+					<style type="text/css">
+					.log-detail{
+						border: none;
+ 						background: #fff;
+					}
+					.log-detail .log-header{
+						position: relative;
+						background-color: #647390;
+					}
+					.log-detail .log-header .certify-log-pic{
+						display: inline-block;
+						text-align: center;
+						margin: 33px 0 33px 50px;
+					}
+					.log-detail .log-header .log-info{
+						position: absolute;
+						left: 210px;
+						padding: 35px 0 30px 0;
+						font-size: 14px;
+						color: #fff;
+					}
+					.log-info h3{
+						font-size: 15px;
+						color: #fff;
+					}
+					.log-info h3 span{
+						color: #ffd73e;					
+					}
+					.log-info li{
+						float: left;
+ 	 					min-width: 100px;
+  						padding-right: 40px;
+  						line-height: 25px;
+  						font-size: 14px;
+  						color: #c1cbdf
+					}
+					.ui-line .ui-solid{
+						width: 618px;
+					}
+					.ui-line{
+						margin: 12px 0 7px 0;
+  						border-bottom: 1px solid #c3c3c3;
+					}
+
+					/*log-body*/
+					.log-body .send-content,.log-body .recv-content{
+  						padding: 20px 40px;
+  						margin: 15px auto 0 0;
+					}
+					.single-region{
+						margin-top: 15px;
+  						border: 1px solid #e7e7e7;
+  						background: #fff;
+					}
+					.log-body h4{
+						font-size: 14px;
+					}
+					.send-content h4{
+						color: #61a2ec;
+					}
+					.recv-content h4{
+						color: #f48a11;
+					}
+					.detail-list{
+						display: inline-block;
+  						color: gray;
+  						font-size: 12px;
+  						line-height: 2.2;
+					}
+					.log-body .detail-list{
+						line-height: 1.8em;
+  						font-size: 14px;
+					}
+					.detail-list-t{
+  						margin: 0;
+					}
+					.log-body .detail-list-t1,.log-body .detail-list-t2{
+						width: auto;
+  						padding-right: 10px;
+  						text-align: left;
+  						color: #999;
+					}
+					.detail-list-t1 span{
+						margin-right: 25px;
+					}
+					.detail-list-t2 span{
+						margin-right: 10px;
+					}
+					</style>
+					<div name="log-detail" id="log-detail" class="log-detail z-1" style="display:none;">
+						<div class="log-header" style="height:146px;">
+							<div class="certify-log-pic">
+								<img src="../../resources/images/icons-firms/yuantong.png" width="92" height="80">
+							</div>
+							<div class="log-info" style="top:-25px;">
+								<h3>订单编号: <span>QZ1874099929</span></h3>
+								<ul class="z-1">
+									<li>承运公司: <span>圆通速递</span></li>
+									<li>收件人姓名: <span>MA XINYU</span></li>
+								</ul>
+								<div class="ui-line ui-solid"></div>
+								<p>下单时间: <span>2015-04-19 23:12:05</span></p>
+							</div>
+						</div>
+						<div class="log-body z-1">
+							<div class="single-region send-content">
+								<h4>寄件人信息:</h4>
+								<div class="detail-list">
+									<div class="detail-list-t1">寄件人姓名: <span>马歆雨</span>联系电话: <span>15267020000</span></div>
+									<div class="detail-list-t2">寄件人地址: <span>浙江省</span><span>杭州市</span><span>西湖区</span><span>浙江大学玉泉校区曹光彪楼100</span></div>
+								</div>
+							</div>
+							<div class="single-region recv-content">
+								<h4>收件人信息:</h4>
+								<div class="detail-list">
+									<div class="detail-list-t1">收件人姓名: <span>MAXINYU</span>联系电话: <span>15267020000</span></div>
+									<div class="detail-list-t2">收件人地址: <span>浙江省</span><span>杭州市</span><span>西湖区</span><span>浙江大学玉泉校区曹光彪楼100</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- detail slide up/down end -->
+					<div id="address-table-tab" name="address-table-tab" class="tab-div z-1">
+						<ul class="z-1 in-0">
+							<li class="tab-item tab-item-current">
+								<a href="">全部</a>
+							</li>
+							<li class="tab-item">
+								<a href="">流转中</a>
+							</li>
+							<li class="tab-item">
+								<a href="">已签收</a>
+							</li>
+							<li class="tab-item">
+								<a href="">未发运</a>
+							</li>
+							<li class="tab-item">
+								<a href="">无流转信息</a>
+							</li>
+							<li class="tab-item">
+								<a href="">获取流转信息错误</a>
+							</li>
+							<li class="tab-item">
+								<a href="">异常</a>
+							</li>
+						</ul>
+					</div>
+					<table class="address-table">
+						<colgroup>
+							<col width="15%">
+							<col width="20%">
+							<col width="40%">
+							<col width="10%">
+							<col width="">
+							<col width="10%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th class="time">下单时间</th>
+								<th>订单号</th>
+								<th>收件人<em class="ft-bar">|</em>收件地址</th>
+								<th>承运公司</th>
+								<th class="memo"></th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="address-bd">
+							<tr>
+								<td class="time">
+									<p>2015.03.27</p>
+									<p class="ft-gray">14:46</p>
+								</td>
+								<td>
+									<p>ZT83210129</p>
+								</td>
+								<td class="d-add">
+									<p>MA XINYU</p>
+									<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+								</td>
+								<td>
+									<p>中通快递</p>
+								</td>
+								<td class="memo"></td>
+								<td class="d-last">
+									<p>
+										<a class="d-l-s" >查状态</a>
+										<em class="ft-bar">|</em>
+										<a class="d-l-d" >详情</a>
+									</p>
+								</td>
+							</tr>
+							<tr class="split">
+								<td class="time">
+									<p>2012.12.05</p>
+									<p class="ft-gray">04:46</p>
+								</td>
+								<td>
+									<p>eHD3823895</p>
+								</td>
+								<td class="d-add">
+									<p>马歆雨</p>
+									<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+								</td>
+								<td>
+									<p>圆通速递</p>
+								</td>
+								<td class="memo"></td>
+								<td class="d-last">
+									<p>
+										<a class="d-l-s" >查状态</a>
+										<em class="ft-bar">|</em>
+										<a class="d-l-d" >详情</a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td class="time">
+									<p>2013.05.05</p>
+									<p class="ft-gray">09:28</p>
+								</td>
+								<td>
+									<p>73918822ST</p>
+								</td>
+								<td class="d-add">
+									<p>李晓明</p>
+									<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+								</td>
+								<td>
+									<p>申通快运</p>
+								</td>
+								<td class="memo"></td>
+								<td class="d-last">
+									<p>
+										<a class="d-l-s" >查状态</a>
+										<em class="ft-bar">|</em>
+										<a class="d-l-d" >详情</a>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p id="btn-n" name="btn-n" class="btns" style="margin-top:20px">
+						<a class="address-add-btn">增加新订单</a>
+					</p>
+					<p id="btn-sq" name="btn-sq" class="btns" style="margin-top:20px;display:none;">
+						<a class="address-add-btn">收起详情</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" charset="UTF-8">
+		$("#srv").mouseover(function(){
+			$("#srv").children("div").css('display','block');
+		})
+		$("#srv").mouseout(function(){
+			$("#srv").children("div").css('display','none');
+		})
+		$("body").bind("click",function(e){
+			if(e.target.name == "tm-1-selector" && $(e.target).parents("#tm-div").length != 0){
+				$("#tm-1-tg").css('display','block');
+				$("#tm-2-tg").css('display','none');
+				$("#cmp-tg").css('display','none');
+			}else if(e.target.name == "tm-2-selector" && $(e.target).parents("#tm-div").length != 0){
+				$("#tm-2-tg").css('display','block');
+				$("#tm-1-tg").css('display','none');
+				$("#cmp-tg").css('display','none');
+			}else if(e.target.name == "cmp-selector" && $(e.target).parents("#cmp-div").length != 0){
+				$("#cmp-tg").css('display','block');
+				$("#tm-1-tg").css('display','none');
+				$("#tm-2-tg").css('display','none');
+			}else{
+				$("#tm-1-tg").css('display','none');
+				$("#tm-2-tg").css('display','none');
+				$("#cmp-tg").css('display','none');
+			}
+		});
+		$("#cmp-tg").children("ul").bind("click",function(e){
+			var nowNode = $("#cmp-tg").children("ul").find('li.ui-select-item-selected');
+			nowNode.removeClass('ui-select-item-selected');
+			nowNode.attr("data-selected","false");
+			if($(e.target).parents("ul").length != 0){
+				var s = $(e.target);
+				var m = e.target;
+				s.attr("data-selected","true");
+				s.addClass('ui-select-item-selected');
+				document.getElementById("cmp-selector").innerHTML = m.innerHTML;
+			}
+		});
+		$("#tm-1-tg").children("ul").bind("click",function(e){
+			var nowNode = $("#tm-1-tg").children("ul").find('li.ui-select-item-selected');
+			nowNode.removeClass('ui-select-item-selected');
+			nowNode.attr("data-selected","false");
+			if($(e.target).parents("ul").length != 0){
+				var s = $(e.target);
+				var m = e.target;
+				s.attr("data-selected","true");
+				s.addClass('ui-select-item-selected');
+				document.getElementById("tm-1-selector").innerHTML = m.innerHTML;
+			}
+		});
+		$("#tm-2-tg").children("ul").bind("click",function(e){
+			var nowNode = $("#tm-2-tg").children("ul").find('li.ui-select-item-selected');
+			nowNode.removeClass('ui-select-item-selected');
+			nowNode.attr("data-selected","false");
+			if($(e.target).parents("ul").length != 0){
+				var s = $(e.target);
+				var m = e.target;
+				s.attr("data-selected","true");
+				s.addClass('ui-select-item-selected');
+				document.getElementById("tm-2-selector").innerHTML = m.innerHTML;
+			}
+		});
+
+		$("#address-bd").children("tr").children("td.d-last").children("p").children("a.d-l-d").bind("click",function(e){
+			$("#log-detail").slideDown();
+			$("#log-M-search-form-t").slideUp();
+			$("#log-M-search-form").slideUp();
+			$("#address-table-tab").slideUp();
+			$("table.address-table").slideUp();
+			$("#btn-n").css('display','none');
+			$("#btn-sq").css('display','block');
+		});
+		$("#btn-sq").bind('click',function(e){
+			$("#log-detail").slideUp();
+			$("#log-M-search-form-t").slideDown();
+			$("#log-M-search-form").slideDown();
+			$("#address-table-tab").slideDown();
+			$("table.address-table").slideDown();
+			$("#btn-n").css('display','block');
+			$("#btn-sq").css('display','none');
+		});
+		</script>
+	</body>
+</html>

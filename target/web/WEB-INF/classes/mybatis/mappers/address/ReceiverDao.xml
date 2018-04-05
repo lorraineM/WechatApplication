@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ziniu.logistics.web.dao.ReceiverDao">
+	<insert id="insert" parameterType="com.ziniu.logistics.web.vo.ReceiverVo" useGeneratedKeys="true" keyProperty="id">
+		insert into Receiver(
+			version,createTime,lastUpdateTime,
+			username,receiverMan,receiverManPhone,
+			receiverManAddress,receiverPostcode,receiverCity,receiverProvince,receiverCounty
+		) values (
+			0,
+			#{createTime,jdbcType=TIMESTAMP},
+			#{lastUpdateTime,jdbcType=TIMESTAMP},
+			#{username,jdbcType=VARCHAR},
+			#{receiverMan,jdbcType=VARCHAR},
+			#{receiverManPhone,jdbcType=VARCHAR},
+			#{receiverManAddress,jdbcType=VARCHAR},
+			#{receiverPostcode,jdbcType=VARCHAR},
+			#{receiverCity,jdbcType=VARCHAR},
+			#{receiverProvince,jdbcType=VARCHAR},
+			#{receiverCounty,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.ziniu.logistics.web.vo.ReceiverVo">
+		update Receiver set
+		version=version+1,
+		lastUpdateTime=SYSDATE(),
+		receiverMan = #{receiverMan,jdbcType=VARCHAR},
+		receiverManPhone = #{receiverManPhone,jdbcType=VARCHAR},
+		receiverManAddress = 	#{receiverManAddress,jdbcType=VARCHAR},
+		receiverPostcode = 	#{receiverPostcode,jdbcType=VARCHAR},
+		receiverCity = 	#{receiverCity,jdbcType=VARCHAR},
+		receiverProvince = 	#{receiverProvince,jdbcType=VARCHAR},
+		receiverCounty = 	#{receiverCounty,jdbcType=VARCHAR}
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from Receiver where id=#{id}
+	</delete>
+	
+	<resultMap id="receiver" type="com.ziniu.logistics.web.domain.ReceiverItem">
+		<id column="id" property="id"/>
+		<result column="createTime" property="createTime" />
+		<result column="lastUpdateTime" property="lastUpdateTime" />
+		<result column="username" property="username" />
+		<result column="receiverMan" property="receiverMan"/>
+		<result column="receiverManPhone" property="receiverManPhone"/>
+		<result column="receiverManAddress" property="receiverManAddress"/>
+		<result column="receiverPostcode" property="receiverPostcode"/>
+		<result column="receiverCity" property="receiverCity"/>
+		<result column="receiverProvince" property="receiverProvince"/>
+		<result column="receiverCounty" property="receiverCounty"/>
+	</resultMap>
+	<select id="select" resultMap="receiver">
+		select * from Receiver where username = #{username,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.Long" resultMap="receiver">
+		select * from Receiver where id = #{id}
+	</select>
+	<select id="getMaxId" resultMap="receiver">
+		select max(id) from Receiver;
+	</select>
+</mapper>

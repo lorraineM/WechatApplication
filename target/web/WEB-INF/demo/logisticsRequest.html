@@ -1,0 +1,1218 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>快递下单Demo</title>
+		<meta name="author" content="xxx" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"  />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/header.css"  />
+		<script type="text/javascript" src="../../resources/js/jquery.min.js"  ></script>
+		<script type="text/javascript" src="../../resources/js/bootstrap.min.js" ></script>
+		<style type="text/css">
+		.main-container{
+			color: #666;
+			padding-top: 0;
+			height: auto;
+			margin-top: -47px;
+			/*background-color: #eee;*/
+		}
+		.main-container .banner{
+			background: url("../../resources/images/pic-web/lightgreen.jpg") no-repeat center;*/
+			padding-top: 42px;
+			color: #fff;
+			border-bottom: 1px solid #eee;
+			position: relative;
+		}
+		.grid-25{
+			width: 990px;
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 0;
+			display: inline;
+		}
+		.small-title{
+			display: block;
+			overflow: hidden;
+			position: relative;
+			color: #4d4d4d;
+			clear: both;
+		}
+		.z-1:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+		
+		.s-btns a{
+			margin-left: 190px;
+			width: 220px;
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			text-decoration: none;
+			background-color: #ffa800;
+			text-decoration:none;
+		}
+		.s-btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+		.search-a-btn{
+			display: inline-block;
+			border: none;
+			border-radius: 3px;
+			overflow: visible;
+			font-size: 18px;
+			color: #ffffff;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="top_header">
+			<div class="d-w-990 top_header-wrap z-1">
+				<ul class="topmenu">
+					<li class="topmenu-item topmenu-item-first">
+						欢迎用户:
+					</li>
+					<li class="topmenu-item">
+						<a href="" title="进入我的快递demo">15200000000</a>
+					</li>
+					<li class="topmenu-item">
+						<a seed="logout" href="">退出登录</a>
+					</li>
+					<li class="topmenu-item topmenu-item-last">
+						<a href="" target="_blank" title="常见问题FAQ">常见问题</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<header class="header">
+			<div class="d-w-990 header-wrap z-1">
+				<nav role="navigation">
+					<ul class="nav">
+						<li class="nav-item" id="home">
+							<a href="" class="nav-item-link">首页</a>
+						</li>
+						<li class="nav-item" id="send">
+							<a href="" class="nav-item-link">我要寄件</a>
+						</li>
+						<li class="nav-item" id="srv">
+							<a href="" class="nav-item-link">管理服务</a>
+							<div class="nav-item-sub sl-shadow" style="display:none;">
+								<table class="nav-item-table">
+									<thead></thead>
+									<tbody style="font-size:12px">
+										<tr>
+											<td><a href="">地址管理</a></td>
+											<td class="last"><a href="">运单管理</a></td>
+										</tr>
+										<tr>
+											<td><a href="">公司管理</a></td>
+											<td class="last"><a href="">站点管理</a></td>
+										</tr>
+										<tr>
+											<td class"last"><a href="">公司配置</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="angle sl-angle"></div>
+						</li>
+						<li class="nav-item" id="search">
+							<a href="" class="nav-item-link">快件查询</a>
+						</li>
+						<li class="nav-item" id="about">
+							<a href="" class="nav-item-link">关于我们</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="sub-header">
+			<ul class="sub-nav">
+				<li class="sub-nav-item sub-nav-item-current">
+					<a href="">我要寄件</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main-container">
+			<div class="banner" style="background:none">
+				<div class="d-w-990 z-1">
+					<div class="grid-25">
+					</div>
+				</div>
+			</div>
+			<style type="text/css">
+			.d-s-title .circle{
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				left: 28px;
+				top: 0;
+				background: url("../../resources/images/pic-web/s-circle.png") 0 0 no-repeat;
+				line-height: 30px;
+				text-align: center;
+			}
+			.inline-area{
+				display: inline;
+			}
+			.d-s-title{
+				position: relative;
+				line-height: 30px;
+				padding-left: 55px;
+			}
+			.inline-area h2{
+				font-size: 18px;
+				color: #444;
+				font-weight: normal;
+			}
+			.inline-area h2 a{
+				color: #444;
+				display: inline-block;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			.address_block{
+				width: 600px;
+				margin: 0px 0 0px 55px;
+				min-height: 100px;
+				position: relative;
+				border: 1px solid #eee;
+				border-radius: 8px;
+				line-height: 24px;
+				font-size: 14px;
+				background: rgba(255,255,255,.8);
+				zoom: 1;
+			}
+			.icon-rt{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/ren.png");
+				margin-right:0.8rem;
+			}
+			.icon-map{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/dz.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.icon-sj{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/sj.png");
+				margin-right:0.8rem
+			}
+			.address_block p.last{
+				margin-left: 45px;
+			}
+			.address_block p span.icon-sj{
+				margin-left: 10px;
+			}
+			.address_block p{
+				margin-left: 20px;
+				margin-top: 10px;
+			}
+			.inline-area h2 a.add-add{
+				font-size: 12px;
+				margin-left: 10px;
+				color: #ffc76d;
+				font-weight: normal;
+				text-decoration: underline;
+			}
+			.side-line{
+				position: absolute;
+				height: 535px;
+				margin-left: 34px;
+				width: 2px;
+				background: #e0e0e0;
+			}
+			</style>
+			<div class="second-div d-w-990 z-1" style="width:650px;">
+				<i class="side-line"></i>
+				<div class="grid-25">
+					<div class="left-side z-1">
+						<div class="d-s-title z-1">
+							<div class="inline-area" style="float:left;">
+								<div class="circle"></div>
+								<h2><a>寄件人地址</a><a onclick="address_select_action()" class="add-add">[更改]</a></h2>
+							</div>
+						</div>
+						<div id="r-a-div" name="r-a-div" class="address_block">
+							<p><span class="icon-rt"></span>马歆雨<span class="icon-sj"></span>15267000000</p>
+							<p><span class="icon-map"></span>浙江省 杭州市 西湖区</p>
+							<p class="last">浙江大学玉泉校区计算机学院曹光彪楼100</p>
+						</div>
+						<div class="d-s-title z-1">
+							<div class="inline-area" style="float:left;">
+								<div class="circle"></div>
+								<h2><a>收件人地址</a><a class="add-add">[更改]</a></h2>
+							</div>
+						</div>
+						<div class="address_block">
+							<p><span class="icon-rt"></span>MA XINYU<span class="icon-sj"></span>13789892121</p>
+							<p><span class="icon-map"></span>浙江省 杭州市 西湖区</p>
+							<p class="last">浙江大学玉泉校区计算机学院曹光彪楼100</p>
+						</div>
+						<div class="d-s-title z-1">
+							<div class="inline-area" style="float:left;">
+								<div class="circle"></div>
+								<h2><a>其他信息</a></h2>
+							</div>
+						</div>
+						<style type="text/css">
+						.o-info-box{
+							line-height: 28px;
+							height: 28px;
+							margin-top: 15px;
+						}
+						.select-trigger {
+        					background-image:url("../../resources/images/pic-web/additional.png");
+        					background-repeat:no-repeat;
+        					background-position:right -529px;
+        					display:inline-block;
+        					text-decoration:none;
+        					font-size:12px;
+        					border: 1px solid #eee;
+        					padding:0 29px 0 10px;
+        					font-family:tahoma;
+        					height:26px;
+        					line-height:26px;
+        					border:1px solid #ccc;
+        					color:#4d4d4d;
+        					cursor:pointer;
+        					vertical-align: middle;
+        					*margin-bottom:3px;
+        					word-break:keep-all;/* 不换行 */
+        					white-space:nowrap;/* 不换行 */
+        					overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+        					text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+
+    					}
+    					.select-item{
+    						width: 100px;
+    						margin-left: 10px;
+    						padding-left:10px;
+    					}
+    					.select-trigger:hover {
+        					border-color:#a6a6a6;
+        					text-decoration:none;
+        					color:#4d4d4d;
+    					}
+    					.select-trigger:active {
+        					color:#4d4d4d;
+    					}
+    					.select {
+        					border: 1px solid #eee;
+        					font-family:tahoma;
+        					overflow-y: auto;
+        					overflow-x: hidden;
+      						width: 154px;
+       					 	_height:expression(this.scrollHeight>252?"253px":"auto");
+       					 	max-height:253px;
+    					}
+    					/*ui-select*/
+    					.ui-select{
+							border: 1px solid #eee;
+  							font-family: tahoma;
+  							overflow-y: auto;
+  							overflow-x: hidden;
+  							width: 154px;
+  							_height: expression(this.scrollHeight>252?"253px":"auto");
+ 			 				max-height: 253px;
+						}
+						.ui-select-mini{
+							width: 100px;
+						}
+						.ui-select-content{
+							background: #f2f2f2;
+						}
+						.ui-select-item:hover{
+							background: #f9f9f9;
+						}
+						.ui-select ul li.ui-select-item-selected{
+							background: #f0f0f0;
+						}
+						.ui-select-item{
+							font-size: 12px;
+  							list-style: none;
+ 			 				height: 28px;
+  							line-height: 28px;
+  							padding: 0 15px 0 10px;
+  							cursor: default;
+  							width: 125px;
+  							background: #fff;
+  							word-break: keep-all;
+  							white-space: nowrap;
+  							overflow: hidden;
+  							text-overflow: ellipsis;
+						}
+    					/*ui-select end*/
+    					.o-info-box .form-label{
+							float: left;
+							height: 28px;
+							line-height: 28px;
+							font-weight: 700;
+							text-align: right;
+							vertical-align: top;
+							color: #4d4d4d;
+							margin-left: 20px;
+						}
+						.o-info-box .form-item-content{
+							float: left;
+							width: 150px;
+						}
+						.o-info-box .form-item-content .input{
+    						height:28px;
+    						font-size: 12px;
+    						color: #595959;
+    						vertical-align: middle;
+    						width: 120px;
+    						margin-left: 10px;
+    					}
+    					.address_block textarea{
+    						border: none;
+    						width: 100%;
+    						height: 100%;
+    					}
+    					.beizhu:hover{
+    						border: none;
+    						text-decoration: none;
+    					}
+    					/*重复*/
+    					.address_block .preview{
+    						line-height: 16px;
+    						font-size: 14px;
+    						color: #444;
+    					}
+    					.preview .sed{
+    						margin-left: 10px;
+    					}
+    					.one-block{
+    						border-bottom: solid 1px #ccc;
+    					}
+    					.p-btns a{
+							width: 140px;
+							height: 40px;
+							line-height: 40px;
+							padding: 0;
+							text-decoration: none;
+						}
+						/*ffa800 80c7ec*/
+						.address-add-btn-o{
+							display: inline-block;
+							border: none;
+							border-radius: 3px;
+							overflow: visible;
+							font-size: 14px;
+							color: #fff;
+							text-align: center;
+							cursor: pointer;
+							background-color: #ffa800;
+						}
+						.address-add-btn-b{
+							display: inline-block;
+							border: none;
+							border-radius: 3px;
+							overflow: visible;
+							font-size: 14px;
+							color: #fff;
+							text-align: center;
+							cursor: pointer;
+							background-color: #80c7ec;
+						}
+						.p-btns a:hover{
+							text-decoration: none;color: #fff;
+						}
+						.p-btns a.address-add-btn-o:hover{background-color: #fa7c13;}
+						.p-btns a.address-add-btn-b:hover{background-color: #12a5f2;}
+						</style>
+						<div class="address_block">
+							<div class="o-info-box">
+								<label class="form-label">承运公司: </label>
+								<div id="cmp-div" name="cmp-div" class="form-item-content">
+									<select class="form-select" style="display:none">
+										<option value="">中通</option>
+										<option value="">圆通</option>
+										<option value="">顺丰</option>
+										<option value="">汇通</option>
+										<option value="">EMS</option>
+									</select>
+									<a id="cmp-selector" name="cmp-selector" class="select-trigger select-item">中通</a>
+									<div id="cmp-tg" name="cmp-tg" class="ui-select ui-select-mini" data-widget-cid="widget-8" style="z-index:99;display:none;position:absolute;margin-left:10px;">
+										<ul class="ui-select-content" data-role="content" style="padding:0;margin:0;">
+											<li data-role="item" class="ui-select-item ui-select-item-selected" data-value="ZTO" data-default-selected="true" data-selected="true" data-disabled>中通</li>
+											<li data-role="item" class="ui-select-item" data-value="YTO" data-default-selected="false" data-selected="false" data-disabled>圆通</li>
+											<li data-role="item" class="ui-select-item" data-value="SF" data-default-selected="false" data-selected="false" data-disabled>顺丰</li>
+											<li data-role="item" class="ui-select-item" data-value="HTKY" data-default-selected="false" data-selected="false" data-disabled>汇通</li>
+											<li data-role="item" class="ui-select-item" data-value="EMS" data-default-selected="false" data-selected="false" data-disabled>EMS</li>
+										</ul>
+									</div>
+								</div>
+								<label class="form-label">货品种类: </label>
+								<div id="spe-div" name="spe-div" class="form-item-content">
+									<select class="form-select" style="display:none">
+										<option value="">食品</option>
+										<option value="">药品</option>
+										<option value="">电子产品/器件</option>
+										<option value="">服饰</option>
+										<option value="">文件</option>
+										<option value="">贵重物品</option>
+										<option value="">其他</option>
+									</select>
+									<a id="spe-selector" name="spe-selector" class="select-trigger select-item">食品</a>
+									<div id="spe-tg" name="spe-tg" class="ui-select ui-select-mini" data-widget-cid="widget-8" style="z-index:99;display:none;position:absolute;margin-left:10px;">
+										<ul class="ui-select-content" data-role="content" style="padding:0;margin:0;">
+											<li data-role="item" class="ui-select-item ui-select-item-selected" data-value="食品" data-default-selected="true" data-selected="true" data-disabled>食品</li>
+											<li data-role="item" class="ui-select-item" data-value="药品" data-default-selected="false" data-selected="false" data-disabled>药品</li>
+											<li data-role="item" class="ui-select-item" data-value="电子产品/器件" data-default-selected="false" data-selected="false" data-disabled>电子产品/器件</li>
+											<li data-role="item" class="ui-select-item" data-value="服饰" data-default-selected="false" data-selected="false" data-disabled>服饰</li>
+											<li data-role="item" class="ui-select-item" data-value="文件" data-default-selected="false" data-selected="false" data-disabled>文件</li>
+											<li data-role="item" class="ui-select-item" data-value="贵重物品" data-default-selected="false" data-selected="false" data-disabled>贵重物品</li>
+											<li data-role="item" class="ui-select-item" data-value="其他" data-default-selected="false" data-selected="false" data-disabled>其他</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<style type="text/css">
+							.radio_btn{
+								display: inline-block;
+								background-color: #fff;
+								border: none;
+								padding: 6px 12px;
+								font-size: 13px;
+								font-weight: normal;
+  								line-height: 1.42857143;
+  								text-align: center;
+  								touch-action: manipulation;
+  								cursor: pointer;
+  								border-top-right-radius: 0;
+  								border-bottom-right-radius: 0;
+  								vertical-align: middle;
+							}
+							.radio_btn input[type="radio"]{
+								position: absolute;
+  								clip: rect(0, 0, 0, 0);
+  								pointer-events: none;
+							}
+							.radio_btn.active{
+								background-color: #12a5f2;
+							color: #fff;
+							}
+							.btn-group > .radio_btn{
+								float: left;
+								position: relative;
+							}
+							</style>
+							<div class="o-info-box">
+								<label class="form-label">支付方式: </label>
+								<div class="btn-group" data-toggle="buttons" style="margin-left:10px;">
+  									<label name="cmp-pay" id="cmp-pay" class="radio_btn active">
+    									<input type="radio" autocomplete="off" checked> 公司支付
+ 						 			</label>
+ 									<label name="ind-pay" id="ind-pay" class="radio_btn">
+    									<input type="radio" autocomplete="off"> 个人支付
+ 									</label>
+								</div>
+							</div>	
+						</div>
+						<div class="d-s-title z-1">
+							<div class="p-btns" id="address_btn" name="address_btn" style="margin-top:20px">
+								<a class="address-add-btn-o">提交并打印</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- style for modal -->
+		<style type="text/css">
+		.s-btns a{
+				margin: 0;
+				width: 220px;
+				height: 40px;
+				line-height: 40px;
+				padding: 0;
+				text-decoration: none;
+				background-color: #ffa800;
+				text-decoration:none;
+			}
+			.s-btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+			.search-a-btn{
+				display: inline-block;
+				border: none;
+				border-radius: 3px;
+				overflow: visible;
+				font-size: 18px;
+				color: #ffffff;
+				text-align: center;
+				cursor: pointer;
+			}
+			input{
+				border: none;
+				outline: none;
+			}
+			.card{
+				width: 600px;
+				margin: 25px 0;
+			}
+			.panel{
+				float: left;
+  				display: inline;
+  				height: 500px;
+  				width: 595px;
+  				padding: 20px 20px 25px 25px;
+  				background-color: rgba(255,255,255,0.95);
+  				background-color: #fff\9;
+  				filter: alpha(opacity=95);
+  				border: 1px solid #e6e6e6;
+  				box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  				border-radius: 6px;
+  				position: relative;
+  				font-size: 14px;
+  				z-index: 3;
+			}
+			.crumb{
+				padding: 13px 0px 18px;
+				line-height: 20px;
+				color: #d2d2d2;
+			}
+			.panel .crumb{
+				margin: 0 -10px;
+			}
+			.panel .crumb a{
+				text-decoration: none;
+				cursor: pointer;
+				margin: 0 3px;
+			}
+			.crumb a{
+				padding: 2px 0;
+				margin: 0 5px;
+				color: #666;
+				font-size: 14px;
+			}
+			.crumb a.current{
+				display: inline-block;
+				color: #ffa800
+			}
+			.crumb a.current, .crumb a:hover{
+				border-bottom: 2px solid #ffc734;
+			}
+			.address-box-select{
+				line-height: 16px;
+			}
+			.panel span{
+				display: inline-block;
+			}
+			.main-left{
+				float: left;
+				position: relative;
+				width: 600px;
+			}
+			div#address_dialog_window{
+				margin-left: 200px;
+			}
+		</style>
+		<!-- style for modal end-->
+
+		<!-- modal select address-->
+		<div class="modal fade" id="address_select_modal" tabindex="-1" role="dialog" aria-labelledby="address_select_modal_label" aria-hidden="true">
+			<style type="text/css">
+			.address-table{
+				width: 100%;
+			}
+			.address-table .time{
+				padding-left: 20px;
+				width: 60px;
+				text-align: left;
+			}
+			.address-table .last{
+				text-align: right;
+				padding-right: 20px;
+			}
+			.address-table td .memo{
+				text-align: center;
+			}
+			.address-table thead th{
+				border-bottom: 1px solid #ccc;
+				height: 30px;
+				line-height: 30px;
+				background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f8f8f8),color-stop(1,#f2f2f2));
+				font-style: normal;
+				font-weight: 500;
+				font-size: 12px;
+			}
+			.scroll-y-for-window{
+				height: 300px;
+				overflow-x: hidden;
+				overflow-y: scroll;
+			}
+			.address-table tbody td{
+				vertical-align: top;
+				padding: 10px 0;
+				border-bottom: 1px solid #e6e6e6;
+			}
+			.ft-gray{
+				color: #9a9a9a;
+			}
+			#address-tg p{
+				font-size: 12px;
+				margin: 0;
+			}
+			.d-add{
+				word-break: break-all;
+				word-wrap: break-word;
+			}
+			.split{
+				background-color: #ffe8cf;
+			}
+			.s-btns.p-center{
+				text-align: center;
+				margin-top: 30px;
+			}
+			</style>
+			<div class="second-div d-w-990 z-1">
+				<div class="grid-25 z-1" style="float:none">
+					<div class="main-left" id="address_dialog_window">
+						<div class="card z-1">
+							<div class="panel">
+								<div class="crumb mg-25" style="margin-left:5px;">
+									<a class="current" id="address_select_modal_label">选择寄件人地址</a>
+									<button id="closebtn" name="closebtn" type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:30px;"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="address-box-select">
+									<table class="address-table table-hover">
+										<colgroup>
+											<col width="5%">
+											<col width="15%">
+											<col width="20%">
+											<col width="30%">
+											<col width="5%">
+										</colgroup>
+										<thead>
+											<tr>
+												<th></th>
+												<th>收件人姓名</th>
+												<th>手机号码</th>
+												<th>详细地址</th>
+												<th></th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+								<div name="a-s-div" id="a-s-div" class="address-box-select scroll-y-for-window">
+									<table class="address-table table-hover">
+										<colgroup>
+											<col width="5%">
+											<col width="15%">
+											<col width="20%">
+											<col width="30%">
+											<col width="5%">
+										</colgroup>
+										<thead style="display:none;">
+											<tr>
+												<th></th>
+												<th>收件人姓名</th>
+												<th>手机号码</th>
+												<th>详细地址</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody id="address-tg" name="address-tg">
+											<tr>
+												<td class="memo"></td>
+												<td><p>马歆雨</p></td>
+												<td><p>15267000000</p></td>
+												<td class="d-add">
+													<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+											<tr class="split">
+												<td class="memo"></td>
+												<td><p>MA XINYU</p></td>
+												<td><p>15267000000</p></td>
+												<td class="d-add">
+													<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+											<tr>
+												<td class="memo"></td>
+												<td><p>李小明</p></td>
+												<td><p>13767000011</p></td>
+												<td class="d-add">
+													<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+											<tr>
+												<td class="memo"></td>
+												<td><p>王小明</p></td>
+												<td><p>13767000011</p></td>
+												<td class="d-add">
+													<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+											<tr>
+												<td class="memo"></td>
+												<td><p>王小明</p></td>
+												<td><p>13767000011</p></td>
+												<td class="d-add">
+													<p>浙江省杭州市西湖区浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+											<tr>
+												<td class="memo"></td>
+												<td><p>王小明</p></td>
+												<td><p>13767000011</p></td>
+												<td class="d-add">
+													<p><span>浙江省</span><span>杭州市</span><span>西湖区</span>浙江大学玉泉校区计算机学院曹光彪楼100</p>
+												</td>
+												<td class="memo"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div id="address_btn" name="address_btn" class="s-btns z-1 p-center">
+									<a onclick="address_add_action()" class="search-a-btn" style="width:300px;">新增地址</a>
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal select address end-->
+		<!-- modal add address -->
+		<div class="modal fade" id="address_add_modal" tabindex="-1" role="dialog" aria-labelledby="address_add_modal_label" aria-hidden="true">
+			<style type="text/css">
+			.address-box{
+				line-height: 26px;
+			}
+			.address-box-select{
+				line-height: 16px;
+			}
+			.panel .s-title{
+				font-size: 16px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ss-title{
+				font-size: 14px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ul_s li{
+				margin: 8px 0;
+			}
+			.icon-sj{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/sj.png");
+				margin-right:0.8rem
+			}
+			.icon-rt{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/ren.png");
+				margin-right:0.8rem;
+			}
+			.icon-map{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/dz.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.icon-delete{
+				width:2rem;
+				height:2rem;
+				display: inline-block; 
+				position:absolute;
+				background-size:100% auto; 
+				background-image: url("../../resources/images/icons-png/delete.png");
+			}
+			.icon-address{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/address.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.add-ipt{
+				line-height: 26px;
+				margin-left: 1.66em;
+				margin-top: 10px;
+				width: 290px;
+			}
+			.add-ipt input, textarea{
+				background: none;
+				width: auto;
+				min-width: 190px;
+				border: 1px solid #ffa200;
+				padding-left: 1px;
+			}
+			.bw{
+				border: none;
+				overflow-y: hidden;
+			}
+			.ss-title .icon-map{margin-bottom: 26px;} 
+			.dd-pages{
+				height: 18px;
+				margin-top: 10px;
+				_overflow:hidden;
+			}
+			.dd-pages span.btn-updown{
+				width: 39px;
+				height: 18px;
+				margin-right: 12px;
+				background: url("../../resources/images/pic-web/pages.gif") no-repeat 0 0;
+				vertical-align: text-bottom;
+				position: relative;
+			}
+			.dd-pages span.pages_num{
+				height: 18px;
+				vertical-align: bottom;
+			}
+			.dd-pages span.pages_num b{
+				font-family: Georgia, "Times New Roman", Times, serif;
+ 	 			font-size: 16px;
+  				font-weight: normal;
+  				position: relative;
+  				top: -5px;
+			}
+			.dd-pages span.pages_num b.pf{
+				right: -2px;
+			}
+			.dd-pages span.pages_num b.pb{
+				left: -2px;
+			}
+			.dd-pages span.pages_num i{
+				width: 8px;
+				height: 15px;
+				display: inline-block;
+				background: url("../../resources/images/pic-web/i.gif") no-repeat 0 0;
+			}
+			.btn-updown a{
+				text-decoration: none;
+				cursor: pointer;
+				display: inline-block;
+  				width: 17px;
+ 				height: 17px;
+  				line-height: 200px;
+  				position: absolute;
+  				left: 0px;
+  				top: 0;
+  				overflow: hidden;
+			}
+			</style>
+			<style type="text/css">
+			.detail-ipt textarea{
+				width: 100%;
+  				padding: 8px 0 8px 10px;
+ 				background: #fff;
+  				font-size: 14px;
+  				line-height: 18px;
+  				color: #666;
+  				border: none;
+			}
+			.detail-ipt{
+				width: 300px;
+				background: #fff;
+				border: 1px solid #c0c0c0;
+				padding-left: 8px;
+				border-radius: 3px;
+				line-height: 36px;
+				font-size: 14px;
+			}
+			.dp li a{
+				text-decoration: none;
+			}
+			.f-0{
+				margin-right:10px;
+				float: left;
+				cursor: default;
+			}
+			.pro-dp{
+				position: absolute;
+				left: 125px;
+				top: 220px;
+				width: 300px;
+				height: 250px;
+				background: #fff;
+				padding-left: 0;
+				border: 1px solid #c0c0c0;
+				border-radius: 3px;
+				font-size: 13px;
+			}
+			.pro-dp li{
+				line-height: 26px;
+				zoom: 1;
+			}
+			.pro-dp li a{
+				text-decoration: none;
+				color: #666;
+				margin-right: 30px;
+				text-align: left;
+				white-space: nowrap;
+				overflow: hidden;
+				width: 37px;
+				float: left;
+			}
+			.pro-dp li a.first{
+				margin-left: 25px;
+			}
+			.pro-dp li a.last{
+				margin-right: 10px;
+			}
+			.mg-25{
+				margin-left: 100px;
+			}
+			.ul_s ul li{
+				list-style: none;
+			}
+			span#pro-d{
+				width: 70px;
+			}
+			</style>
+			<div class="second-div d-w-990 z-1">
+				<div class="grid-25 z-1" style="float:none">
+					<div class="main-left" id="address_dialog_window">
+						<div class="card z-1">
+							<div class="panel">
+								<div class="crumb mg-25" style="margin-left:45px;">
+									<span>地址管理</span><em>>></em>
+									<a class="current" id="address_add_modal_label">新增寄件人</a>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:30px;"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="address-box-select mg-25">
+									<div class="ul_s">
+										<ul style="padding-left:0px;">
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-rt"></span>
+													<input type="text" value="" placeholder="寄件人">
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-sj"></span>
+													<input type="text" value="" placeholder="联系电话">
+												</div>
+											</li>
+											<li>
+												<div id="addr-div" name="addr-div" class="z-1" style="width:300px;">
+													<div id="pro-selector" name="pro-selector" class="detail-ipt f-0" style="width:110px;">
+														<span class="icon-map"></span><span id="pro-d" name="pro-d">省</span>
+														<input type="text" value="" style="display:none;">
+														<ul id="pro-tg" name="pro-tg" class="pro-dp" style="display:none">
+															<li>
+																<a class="first" value="1">北京</a>
+																<a >天津</a>
+																<a >河北省</a>
+																<a class="last">山西省</a>
+															</li>
+															<li>
+																<a class="first">内蒙古</a>
+																<a >辽宁省</a>
+																<a >吉林省</a>
+																<a class="last">黑龙江</a>
+															</li>
+															<li>
+																<a class="first">河北省</a>
+																<a >江苏省</a>
+																<a >浙江省</a>
+																<a class="last">上海</a>
+															</li>
+															<li>
+																<a class="first">安徽省</a>
+																<a >江西省</a>
+																<a >福建省</a>
+																<a class="last">山东省</a>
+															</li>
+															<li>
+																<a class="first">河南省</a>
+																<a >湖北省</a>
+																<a >湖南省</a>
+																<a class="last">广东省</a>
+															</li>
+															<li>
+																<a class="first">广西</a>
+																<a >海南省</a>
+																<a >四川省</a>
+																<a class="last">重庆</a>
+															</li>
+															<li>
+																<a class="first">贵州省</a>
+																<a >云南省</a>
+																<a >陕西省</a>
+																<a class="last">西藏</a>
+															</li>
+															<li>
+																<a class="first">甘肃省</a>
+																<a >青海省</a>
+																<a >台湾省</a>
+																<a class="last">新疆</a>
+															</li>
+															<li>
+																<a class="first">宁夏</a>
+																<a >香港</a>
+																<a >澳门</a>
+																<a class="last">海外</a>
+															</li>
+														</ul>
+													</div>
+													<div class="detail-ipt f-0" style="width:90px;">
+														<span>市</span>
+													</div>
+													<div class="detail-ipt f-0" style="width:80px;margin-right:0;">
+														<span>区</span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt" style="padding:0">
+													<textarea cols="4" placeholder="详细地址"></textarea>
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-address"></span>
+													<input type="text" value="" placeholder="邮编">
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="s-btns mg-25 z-1">
+									<a class="search-a-btn" style="width:300px;">保存地址</a>
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal add address end -->
+		<!-- address-select-modal button trigger -->
+		<button id="address_select_modal_btn" name="address_select_modal_btn" type="button" data-toggle="modal" data-target="#address_select_modal" style="display:none">
+		</button>
+		<!-- address-select-modal button trigger end -->
+		<!-- address-add-modal button trigger -->
+		<button id="address_add_modal_btn" name="address_add_modal_btn" type="button" data-toggle="modal" data-target="#address_add_modal" style="display:none">
+		</button>
+		</button>
+		<!-- address-add-modal button trigger end -->
+
+		<script type="text/javascript" charset="UTF-8">
+		$("#srv").mouseover(function(){
+			$("#srv").children("div").css('display','block');
+		})
+		$("#srv").mouseout(function(){
+			$("#srv").children("div").css('display','none');
+		})
+		$("body").bind("click",function(e){
+			if(e.target.name == "cmp-selector" && $(e.target).parents("#cmp-div").length != 0){
+				$("#cmp-tg").css('display','block');
+				$("#spe-tg").css('display','none');
+			}else if(e.target.name == "spe-selector" && $(e.target).parents("#spe-div").length != 0){
+				$("#spe-tg").css('display','block');
+				$("#cmp-tg").css('display','none');
+			}else if($(e.target).parents("#pro-selector").length != 0){
+				if($(e.target).parents("#pro-tg").length != 0);
+				else $("#pro-tg").css('display','block');
+			}
+			else{
+				$("#cmp-tg").css('display','none');
+				$("#spe-tg").css('display','none');
+				$("#pro-tg").css('display','none');
+			}
+		});
+		$("#cmp-tg").children("ul").bind("click",function(e){
+			var nowNode = $("#cmp-tg").children("ul").find('li.ui-select-item-selected');
+			nowNode.removeClass('ui-select-item-selected');
+			nowNode.attr("data-selected","false");
+			if($(e.target).parents("ul").length != 0){
+				var s = $(e.target);
+				var m = e.target;
+				s.attr("data-selected","true");
+				s.addClass('ui-select-item-selected');
+				document.getElementById("cmp-selector").innerHTML = m.innerHTML;
+			}
+		});
+		$("#spe-tg").children("ul").bind("click",function(e){
+			var nowNode = $("#spe-tg").children("ul").find('li.ui-select-item-selected');
+			nowNode.removeClass('ui-select-item-selected');
+			nowNode.attr("data-selected","false");
+			if($(e.target).parents("ul").length != 0){
+				var s = $(e.target);
+				var m = e.target;
+				s.attr("data-selected","true");
+				s.addClass('ui-select-item-selected');
+				document.getElementById("spe-selector").innerHTML = m.innerHTML;
+			}
+		});
+
+		/*checkbox button*/
+		$("#cmp-pay").bind('click',function(){
+			$("#cmp-pay").addClass("active");
+			$("#ind-pay").removeClass("active");
+		});
+		$("#ind-pay").bind('click',function(){
+			$("#ind-pay").addClass("active");
+			$("#cmp-pay").removeClass("active");
+		});
+		/*checkbox button end*/
+		$("#pro-tg").children("li").children("a").bind("click",function(e){
+			var obj = e.target;
+			document.getElementById("pro-d").innerHTML = obj.innerHTML;
+			alert(e.target.getAttribute("value"));
+			$("#pro-tg").css('display','none');
+		});
+
+		/*address select function*/
+		function address_select_action(){
+			document.getElementById("address_select_modal_btn").click();
+		}
+		/*address select function end*/
+		/*address add function*/
+		function address_add_action(){
+			document.getElementById("address_add_modal_btn").click();
+			$("#address_select_modal").fadeOut("slow");
+		}
+		/*address add function end*/
+
+		var str1 = "<p><span class=\"icon-rt\"></span>";
+		var str2 = "<span class=\"icon-sj\"></span>";
+		var str3 = "</p><p class=\"last\">";
+		var str4 = "</p>";
+		$("#address-tg").children("tr").bind("click",function(e){
+			var obj = $(e.target).parents("tr");
+			var child = obj.children("td");
+			var sc = child.eq(1);
+			var tc = child.eq(2);
+			var fc = child.eq(3);
+			var name = sc.text();
+			var tel = tc.text();
+			var addr = fc.text();
+			document.getElementById("r-a-div").innerHTML = str1 + name + str2 + tel + str3 + addr + str4;
+
+			/*关闭modal*/
+			$("#address-tg").children("tr.split").removeClass("split");
+			obj.addClass("split");
+			document.getElementById("closebtn").click();
+
+		});
+		</script>
+	</body>
+</html>

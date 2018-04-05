@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ziniu.logistics.web.dao.SenderDao">
+	<insert id="insert" parameterType="com.ziniu.logistics.web.vo.SenderVo" useGeneratedKeys="true" keyProperty="id">
+		insert into Sender(
+			version,createTime,lastUpdateTime,
+			username,senderMan,senderManPhone,
+			senderManAddress,senderPostcode,senderCity,senderProvince,senderCounty
+		) values (
+			0,
+			#{createTime,jdbcType=TIMESTAMP},
+			#{lastUpdateTime,jdbcType=TIMESTAMP},
+			#{username,jdbcType=VARCHAR},
+			#{senderMan,jdbcType=VARCHAR},
+			#{senderManPhone,jdbcType=VARCHAR},
+			#{senderManAddress,jdbcType=VARCHAR},
+			#{senderPostcode,jdbcType=VARCHAR},
+			#{senderCity,jdbcType=VARCHAR},
+			#{senderProvince,jdbcType=VARCHAR},
+			#{senderCounty,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.ziniu.logistics.web.vo.SenderVo">
+		update Sender set
+		version=version+1,
+		lastUpdateTime=SYSDATE(),
+		senderMan = #{senderMan,jdbcType=VARCHAR},
+		senderManPhone = #{senderManPhone,jdbcType=VARCHAR},
+		senderManAddress = 	#{senderManAddress,jdbcType=VARCHAR},
+		senderPostcode = 	#{senderPostcode,jdbcType=VARCHAR},
+		senderCity = 	#{senderCity,jdbcType=VARCHAR},
+		senderProvince = 	#{senderProvince,jdbcType=VARCHAR},
+		senderCounty = 	#{senderCounty,jdbcType=VARCHAR}
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from Sender where id=#{id}
+	</delete>
+	
+	<resultMap id="sender" type="com.ziniu.logistics.web.domain.SenderItem">
+		<id column="id" property="id"/>
+		<result column="createTime" property="createTime" />
+		<result column="lastUpdateTime" property="lastUpdateTime" />
+		<result column="username" property="username" />
+		<result column="senderMan" property="senderMan"/>
+		<result column="senderManPhone" property="senderManPhone"/>
+		<result column="senderManAddress" property="senderManAddress"/>
+		<result column="senderPostcode" property="senderPostcode"/>
+		<result column="senderCity" property="senderCity"/>
+		<result column="senderProvince" property="senderProvince"/>
+		<result column="senderCounty" property="senderCounty"/>
+	</resultMap>
+	<select id="select" resultMap="sender">
+		select * from Sender where username = #{username,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.Long" resultMap="sender">
+		select * from Sender where id = #{id}
+	</select>
+	<select id="getMaxId" resultMap="sender">
+		select max(id) from Sender;
+	</select>
+</mapper>

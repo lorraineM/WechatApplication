@@ -1,0 +1,461 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>快递下单Demo</title>
+		<meta name="author" content="xxx" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"  />
+		<script type="text/javascript" src="../../resources/js/jquery.min.js"  ></script>
+		<script type="text/javascript" src="../../resources/js/bootstrap.min.js" ></script>
+		<style type="text/css">
+		.d-w-990{
+			width: 990px;
+			margin: 0 auto;
+		}
+		.z-1{
+			zoom:1;
+		}
+		a{
+			text-decoration: none;
+			cursor: pointer;
+		}
+		ul {
+			list-style: none;
+		}
+		li{
+			margin: 0; padding: 0;
+		}
+		nav{
+			margin:0;
+			padding:0;
+			display:block;
+		}
+		body{
+			margin:0;
+			padding:0;
+			font: 12px/1.5 tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+		}
+		div{
+			margin:0;padding:0;
+		}
+		table{
+			border-collapse:collapse;
+			border-spacing:0;
+		}
+		select{font-size: 100%;}
+		em{ font-weight: 500; font-style: normal;}
+		.main-container{
+			color: #666;
+			padding-top: 0;
+			height: auto;
+			margin-top: -47px;
+			/*background-color: #eee;*/
+		}
+		.grid-25{
+			width: 990px;
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 0;
+			display: inline;
+		}
+		.z-1:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+		</style>
+	</head>
+	<body>
+		<div class="main-container">
+			<style type="text/css">
+			.s-btns a{
+			margin: 0;
+			width: 220px;
+			height: 40px;
+			line-height: 40px;
+			padding: 0;
+			text-decoration: none;
+			background-color: #ffa800;
+			text-decoration:none;
+			}
+			.s-btns a:hover{background-color: #fa7c13;text-decoration: none;color: #fff;}
+			.search-a-btn{
+				display: inline-block;
+				border: none;
+				border-radius: 3px;
+				overflow: visible;
+				font-size: 18px;
+				color: #ffffff;
+				text-align: center;
+				cursor: pointer;
+			}
+			input{
+				border: none;
+				outline: none;
+			}
+			.card{
+				width: 600px;
+				margin: 25px 0;
+			}
+			.panel{
+				float: left;
+  				display: inline;
+  				height: 500px;
+  				width: 595px;
+  				padding: 20px 20px 25px 25px;
+  				background-color: rgba(255,255,255,0.95);
+  				background-color: #fff\9;
+  				filter: alpha(opacity=95);
+  				border: 1px solid #e6e6e6;
+  				box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  				border-radius: 6px;
+  				position: relative;
+  				font-size: 14px;
+  				z-index: 3;
+			}
+			.crumb{
+				padding: 13px 0px 18px;
+				line-height: 20px;
+				color: #d2d2d2;
+			}
+			.panel .crumb{
+				margin: 0 -10px;
+			}
+			.panel .crumb a{
+				text-decoration: none;
+				cursor: pointer;
+				margin: 0 3px;
+			}
+			.crumb a{
+				padding: 2px 0;
+				margin: 0 5px;
+				color: #666;
+				font-size: 14px;
+			}
+			.crumb a.current{
+				display: inline-block;
+				color: #ffa800
+			}
+			.crumb a.current, .crumb a:hover{
+				border-bottom: 2px solid #ffc734;
+			}
+			.address-box{
+				line-height: 26px;
+			}
+			.address-box-select{
+				line-height: 16px;
+			}
+			.panel .s-title{
+				font-size: 16px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ss-title{
+				font-size: 14px;
+  				color: #725749;
+  				font-family: Georgia, "Times New Roman", Times, serif;
+			}
+			.panel .ul_s li{
+				margin: 8px 0;
+			}
+			.panel span{
+				display: inline-block;
+			}
+			.icon-sj{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/sj.png");
+				margin-right:0.8rem
+			}
+			.icon-rt{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/ren.png");
+				margin-right:0.8rem;
+			}
+			.icon-map{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/dz.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.icon-delete{
+				width:2rem;
+				height:2rem;
+				display: inline-block; 
+				position:absolute;
+				background-size:100% auto; 
+				background-image: url("../../resources/images/icons-png/delete.png");
+			}
+			.icon-address{
+				width:1.66rem;
+				height:1.66rem;
+				display: inline-block;
+				background-size:100% auto; 
+				background-image:url("../../resources/images/icons-png/address.png");
+				margin:0 0.8rem 0 0; 
+			}
+			.add-ipt{
+				line-height: 26px;
+				margin-left: 1.66em;
+				margin-top: 10px;
+				width: 290px;
+			}
+			.add-ipt input, textarea{
+				background: none;
+				width: auto;
+				min-width: 190px;
+				border: 1px solid #ffa200;
+				padding-left: 1px;
+			}
+			.main-left{
+				float: left;
+				position: relative;
+				width: 600px;
+			}
+			.bw{
+				border: none;
+				overflow-y: hidden;
+			}
+			.ss-title .icon-map{margin-bottom: 26px;} 
+			.dd-pages{
+				height: 18px;
+				margin-top: 10px;
+				_overflow:hidden;
+			}
+			.dd-pages span.btn-updown{
+				width: 39px;
+				height: 18px;
+				margin-right: 12px;
+				background: url("../../resources/images/pic-web/pages.gif") no-repeat 0 0;
+				vertical-align: text-bottom;
+				position: relative;
+			}
+			.dd-pages span.pages_num{
+				height: 18px;
+				vertical-align: bottom;
+			}
+			.dd-pages span.pages_num b{
+				font-family: Georgia, "Times New Roman", Times, serif;
+ 	 			font-size: 16px;
+  				font-weight: normal;
+  				position: relative;
+  				top: -5px;
+			}
+			.dd-pages span.pages_num b.pf{
+				right: -2px;
+			}
+			.dd-pages span.pages_num b.pb{
+				left: -2px;
+			}
+			.dd-pages span.pages_num i{
+				width: 8px;
+				height: 15px;
+				display: inline-block;
+				background: url("../../resources/images/pic-web/i.gif") no-repeat 0 0;
+			}
+			.btn-updown a{
+				text-decoration: none;
+				cursor: pointer;
+				display: inline-block;
+  				width: 17px;
+ 				height: 17px;
+  				line-height: 200px;
+  				position: absolute;
+  				left: 0px;
+  				top: 0;
+  				overflow: hidden;
+			}
+			</style>
+			<style type="text/css">
+			.detail-ipt textarea{
+				width: 100%;
+  				padding: 8px 0 8px 10px;
+ 				background: #fff;
+  				font-size: 14px;
+  				line-height: 18px;
+  				color: #666;
+  				border: none;
+			}
+			.detail-ipt{
+				width: 300px;
+				background: #fff;
+				border: 1px solid #c0c0c0;
+				padding-left: 8px;
+				border-radius: 3px;
+				line-height: 36px;
+				font-size: 14px;
+			}
+			.dp li a{
+				text-decoration: none;
+			}
+			.f-0{
+				margin-right:10px;
+				float: left;
+				cursor: default;
+			}
+			.pro-dp{
+				position: absolute;
+				left: 100px;
+				top: 220px;
+				width: 300px;
+				height: 250px;
+				background: #fff;
+				padding-left: 0;
+				border: 1px solid #c0c0c0;
+				border-radius: 3px;
+				font-size: 13px;
+			}
+			.pro-dp li{
+				line-height: 26px;
+				zoom: 1;
+			}
+			.pro-dp li a{
+				text-decoration: none;
+				color: #666;
+				margin-right: 30px;
+				text-align: left;
+				white-space: nowrap;
+				overflow: hidden;
+				width: 37px;
+				float: left;
+			}
+			.pro-dp li a.first{
+				margin-left: 25px;
+			}
+			.pro-dp li a.last{
+				margin-right: 10px;
+			}
+			.mg-25{
+				margin-left: 75px;
+			}
+			</style>
+			<div class="second-div d-w-990 z-1">
+				<div class="grid-25 z-1" style="float:none">
+					<div class="main-left">
+						<div class="card z-1">
+							<div class="panel">
+								<div class="crumb mg-25">
+									<a href="" class="current">新增寄件人</a>
+								</div>
+								<div class="address-box-select mg-25">
+									<div class="ul_s">
+										<ul style="padding-left:0px;">
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-rt"></span>
+													<input type="text" value="" placeholder="寄件人">
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-sj"></span>
+													<input type="text" value="" placeholder="联系电话">
+												</div>
+											</li>
+											<li>
+												<div class="z-1" style="width:300px;">
+													<div id="choose-addr" class="detail-ipt f-0" style="width:110px;">
+														<span class="icon-map"></span><span>省</span>
+														<input type="text" value="" style="display:none;">
+														<ul id="province-dp" class="pro-dp" style="display:none">
+															<li>
+																<a href="" class="first">北京</a>
+																<a href="" >天津</a>
+																<a href="" >河北省</a>
+																<a href="" class="last">山西省</a>
+															</li>
+															<li>
+																<a href="" class="first">内蒙古</a>
+																<a href="" >辽宁省</a>
+																<a href="" >吉林省</a>
+																<a href="" class="last">黑龙江</a>
+															</li>
+															<li>
+																<a href="" class="first">河北省</a>
+																<a href="" >江苏省</a>
+																<a href="" >浙江省</a>
+																<a href="" class="last">上海</a>
+															</li>
+															<li>
+																<a href="" class="first">安徽省</a>
+																<a href="" >江西省</a>
+																<a href="" >福建省</a>
+																<a href="" class="last">山东省</a>
+															</li>
+															<li>
+																<a href="" class="first">河南省</a>
+																<a href="" >湖北省</a>
+																<a href="" >湖南省</a>
+																<a href="" class="last">广东省</a>
+															</li>
+															<li>
+																<a href="" class="first">广西</a>
+																<a href="" >海南省</a>
+																<a href="" >四川省</a>
+																<a href="" class="last">重庆</a>
+															</li>
+															<li>
+																<a href="" class="first">贵州省</a>
+																<a href="" >云南省</a>
+																<a href="" >陕西省</a>
+																<a href="" class="last">西藏</a>
+															</li>
+															<li>
+																<a href="" class="first">甘肃省</a>
+																<a href="" >青海省</a>
+																<a href="" >台湾省</a>
+																<a href="" class="last">新疆</a>
+															</li>
+															<li>
+																<a href="" class="first">宁夏</a>
+																<a href="" >香港</a>
+																<a href="" >澳门</a>
+																<a href="" class="last">海外</a>
+															</li>
+														</ul>
+													</div>
+													<div class="detail-ipt f-0" style="width:90px;">
+														<span>市</span>
+													</div>
+													<div class="detail-ipt f-0" style="width:80px;margin-right:0;">
+														<span>区</span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt" style="padding:0">
+													<textarea cols="4" placeholder="详细地址"></textarea>
+												</div>
+											</li>
+											<li>
+												<div class="detail-ipt">
+													<span class="icon-address"></span>
+													<input type="text" value="" placeholder="邮编">
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="s-btns mg-25 z-1">
+									<a href="" class="search-a-btn" style="width:300px;">保存地址</a>
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+		$("body").bind("click",function(e){
+			if($(e.target).parents("#choose-addr").length != 0 ){
+				$("#choose-addr").children("ul").css('display','block');
+			}else{
+				$("#choose-addr").children("ul").css('display','none');
+			}
+		});
+		</script>
+	</body>
+</html>
